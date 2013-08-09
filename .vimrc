@@ -1,4 +1,4 @@
-set ic
+set smartcase
 set autoindent
 set cindent shiftwidth=4
 set smartindent
@@ -16,7 +16,7 @@ vmap jk <esc>
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
-map <c-n> <c-w>n
+map <c-h> <c-w>h
 
 " don't automatically wrap text when typing
 set fo-=t
@@ -26,4 +26,5 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-
+" turn mouse on (good to resize wondows)
+set mouse=a
