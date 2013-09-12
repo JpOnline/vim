@@ -28,3 +28,13 @@ set noswapfile
 
 " turn mouse on (good to resize wondows)
 set mouse=a
+
+" To debug android remotely
+let $AP_PORT=56368
+let $AP_HOST="192.168.0.105"
+
+" To use shift-e to run python2.6
+map <S-E> :w<CR>:!/usr/bin/python2.6 % <CR>
+
+" Show numbers in the left side (to use set relativenumber too)
+set number
