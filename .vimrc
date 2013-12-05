@@ -1,3 +1,30 @@
+"	Comandos Importantes:
+"u -  undo
+"o -  pula linha e vai pro modo inserção
+":set ic - faz com que a busa ignore maiúsculas e minúsculas
+"CTRL-R - redo
+"b - o mesmo que w, só que para trás
+"CTRL-G - mostra o nome do arquivo
+":set autoindent - identa automaticamente
+":set cindent shifitwidth=4 - identa automaticamente como arquivos c e java com identação tamanho 4
+":filetype indent on - identa automaticamente arquivos conhecidos
+"CTRL-V (com shift) ou CTRL-q - entra no modo Visual Block, que permite inserir em várias linhas ao selecioná-las e apertar I e depois de inserir o testo apertar <ESC> 
+"CTRL-T - indenta no modo inserção
+"CTRL-D - retira uma indentação no modo inserção
+"CTRL-W - deleta uma palavra no modo inserção
+"gU{movimento} - torna maiuscula
+"gu{movimento} - torna minuscula
+"<C-o> - ultima visualizacao
+"<C-i> - contrario de <C-o>
+"<c-z> - puts the vim job in stop mode
+"fg - get back from the stop mode
+"<c-w>s - split horizontal window
+"<c-w>v - split vertical window
+":put a - paste the macro A into a document
+":reg a - show the macro A
+""ay$ - copy the line to the macro A
+"t - as f but stop before the caracter
+
 set smartcase
 set autoindent
 set cindent shiftwidth=4
@@ -44,29 +71,5 @@ set relativenumber
 map <C-S-O> i<CR><Esc>kA <Esc>
 imap <C-S-O> <CR><Esc>k
 
-
-"	Comandos Importantes:
-"u -  undo
-"o -  pula linha e vai pro modo inserção
-":set ic - faz com que a busa ignore maiúsculas e minúsculas
-"CTRL-R - redo
-"b - o mesmo que w, só que para trás
-"CTRL-G - mostra o nome do arquivo
-":set autoindent - identa automaticamente
-":set cindent shifitwidth=4 - identa automaticamente como arquivos c e java com identação tamanho 4
-":filetype indent on - identa automaticamente arquivos conhecidos
-"CTRL-V (com shift) ou CTRL-q - entra no modo Visual Block, que permite inserir em várias linhas ao selecioná-las e apertar I e depois de inserir o testo apertar <ESC> 
-"CTRL-T - indenta no modo inserção
-"CTRL-D - retira uma indentação no modo inserção
-"CTRL-W - deleta uma palavra no modo inserção
-"gU{movimento} - torna maiuscula
-"gu{movimento} - torna minuscula
-"<C-o> - ultima visualizacao
-"<C-i> - contrario de <C-o>
-"<c-z> - puts the vim job in stop mode
-"fg - get back from the stop mode
-"<c-w>s - split horizontal window
-"<c-w>v - split vertical window
-":put a - paste the macro A into a document
-":reg a - show the macro A
-""ay$ - copy the line to the macro A
+" shortcut to adjust beginnings of functions just putting {} after the )
+imap {} <CR>{<CR>}<Esc>ka<CR>
