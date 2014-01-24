@@ -63,7 +63,7 @@ let $AP_HOST="192.168.0.105"
 " To use shift-e to run codekj
 "map <S-E> :w<CR>:!/usr/bin/python % <CR>
 "map <S-E> :w<CR>:!javac %<CR>:!java TestReceiver<CR>
-map <S-E> :w<CR>:!erl erlc %<CR>
+map <S-E> :w<CR>:!erlc %<CR>:!erl<CR>
 
 " Show numbers in the left side (to use set relativenumber too)
 set relativenumber
