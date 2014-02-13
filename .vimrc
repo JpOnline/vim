@@ -24,6 +24,8 @@
 ":reg a - show the macro A
 ""ay$ - copy the line to the macro A
 "t - as f but stop before the caracter
+":mksession session.vim - Salva sessao atual
+"vim -S ~/seesion.vim - inicia vim com seesion
 
 set smartcase
 set autoindent
@@ -78,3 +80,9 @@ imap {} <CR>{<CR>}<Esc>ka<CR>
 
 " Allow horizontal scrolling
 set nowrap
+
+" case insensitive with lower case and case sensitive with some letter in
+" upper case
+set smartcase
+
+
