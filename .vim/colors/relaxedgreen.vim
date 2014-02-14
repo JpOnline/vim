@@ -1,6 +1,6 @@
 " ----------------------------------------------------------------------------------------------------------------------------------
 " Filename:      relaxedgreen.vim
-" Last Modified: 13 Feb 2007 09:57:24 PM by Dave V
+" Last Modified: 14 Feb 2014 by Joao Paulo S.
 " Maintainer:    Dave Vehrs (dvehrs at gmail.com)
 " Copyright:     2002,2003,2004,2005,2006,2007 Dave Vehrs
 "                This script is free software; you can redistribute it and/or 
@@ -30,7 +30,7 @@ highlight DiffChange    term=underline    cterm=reverse ctermfg=darkgreen ctermb
 highlight DiffDelete    term=standout     ctermfg=black ctermbg=cyan                      guifg=#000000 guibg=#007200
 highlight DiffText      term=bold         ctermfg=green ctermbg=black                     guifg=#00ac00 guibg=#000000
 highlight Directory     term=underline    ctermfg=green ctermbg=black                     guifg=#336633 guibg=#000000
-highlight Error         term=reverse,bold ctermfg=black ctermbg=red                       guifg=#000000 guibg=#dc0000
+highlight Error         term=reverse,bold ctermfg=white ctermbg=magenta                    guifg=#000000 guibg=#dc0000
 highlight ErrorMsg      term=reverse,bold ctermfg=white ctermbg=darkred                       guifg=#ffffff guibg=#dc0000
 highlight Folded                          ctermfg=darkgreen ctermbg=black                 guifg=#20de20 guibg=#000000
 highlight FoldColumn                      ctermfg=darkgreen ctermbg=black                 guifg=#20de20 guibg=#000000
@@ -38,7 +38,7 @@ highlight Function      term=standout     ctermfg=darkgreen                     
 highlight Identifier    term=underline    ctermfg=darkcyan                                gui=underline guifg=#008800
 highlight Ignore                          ctermfg=lightgreen                              guifg=#33bb33
 highlight IncSearch     term=reverse      ctermfg=black ctermbg=darkgreen                 guifg=#000000 guibg=#336633
-highlight LineNr        term=bold         ctermfg=lightyellow                                   guifg=#00ff00
+highlight LineNr        term=bold         ctermfg=brown                                   guifg=#00ff00
 highlight MatchParen    term=bold         ctermbg=green                                   guifg=#009900
 highlight ModeMsg       term=bold         cterm=bold                                      gui=bold
 highlight MoreMsg       term=bold         cterm=bold                                      gui=bold
@@ -49,7 +49,7 @@ highlight PmenuSel      term=bold         ctermfg=black  ctermbg=gray           
 highlight PmenuSbar     term=reverse      ctermfg=black ctermbg=green                     guifg=#000000 guibg=#337733 
 highlight PmenuThumb    term=reverse      ctermfg=gray ctermbg=black                      guifg=#999999 guibg=#000000 
 highlight PreProc       term=standout     ctermfg=darkgreen                               guifg=#22bb22
-highlight Question      term=standout     ctermfg=red                                     guifg=#ff0000
+highlight Question      term=standout     ctermfg=magenta                                     guifg=#ff0000
 highlight Search        term=reverse      ctermfg=black ctermbg=darkgreen                 guifg=#000000 guibg=#228822
 highlight SignColumn                      ctermfg=darkgreen                               guifg=#20de20 guibg=#000000
 highlight Special       term=bold         ctermfg=darkgreen                                   guifg=#00ff00
@@ -61,10 +61,10 @@ highlight SpellRare     term=reverse      cterm=underline ctermfg=darkgreen cter
 highlight Statement     term=standout     ctermfg=darkyellow                                 guifg=#ac0000
 highlight StatusLine    term=reverse      ctermfg=lightgray ctermbg=black                 gui=none guibg=#228822 guifg=#000000
 highlight StatusLineNC  term=reverse      ctermfg=darkgray ctermbg=blue                  gui=none guibg=#336633 guifg=#000000
-highlight TabLine       term=reverse      cterm=reverse ctermfg=black ctermbg=green       guibg=#222222 guifg=#228822
-highlight TabLineFill   term=reverse      cterm=reverse ctermfg=green ctermbg=black       guibg=#222222 guifg=#226622
-highlight TabLineSel                      ctermfg=black ctermbg=green                     guibg=#228822 guifg=#222222
-highlight Title         term=reverse      ctermfg=black ctermbg=green                     guifg=#000000 guibg=#00ff00
+highlight TabLine       term=reverse      cterm=reverse ctermfg=darkgreen ctermbg=white       guibg=#222222 guifg=#228822
+highlight TabLineFill   term=reverse      cterm=reverse ctermfg=darkgreen ctermbg=green       guibg=#222222 guifg=#226622
+highlight TabLineSel                      ctermfg=gray ctermbg=black                     guibg=#228822 guifg=#222222
+highlight Title         term=reverse      ctermfg=darkgreen ctermbg=black                     guifg=#000000 guibg=#00ff00
 highlight Todo          term=reverse      cterm=reverse ctermfg=darkgreen ctermbg=black   guibg=#336633 guifg=#000000
 highlight Type          term=standout     ctermfg=green                                   guifg=#559955
 highlight Visual        term=reverse      cterm=reverse ctermfg=darkgreen                 guifg=#000000 guibg=#336633
