@@ -31,6 +31,8 @@
 "zt			      redraw, current line at top of window
 "zz                           redraw, current line at center of window
 "zb                           redraw, current line at botton of window
+"*			      search forward the word under the cursor
+"£			      search backward the word under the cursor
 
 set showcmd
 set smartcase
@@ -82,7 +84,7 @@ map <C-S-O> i<CR><Esc>kA <Esc>
 imap <C-S-O> <CR><Esc>k
 
 " shortcut to adjust beginnings of functions just putting {} after the )
-imap {} <CR>{<CR>}<Esc>ka<CR>
+imap {} {<CR>}<Esc>ko
 
 " Allow horizontal scrolling
 set nowrap
@@ -95,10 +97,15 @@ set ic
 " A better colorscheme
 colorscheme relaxedgreen
 
-" To use CTRL+SHIFT+L and CTRL+SHIFT+H to cange tabs
+" To use CTRL+A and CTRL+D to cange tabs
 map <C-A> gT
 map <C-D> gt
+imap <C-A> <esc>gTi
+imap <C-D> <esc>gti
 
 " map space to create/open/close fold
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
 vnoremap <Space> zf
+
+" map CTRL-SPACE to open the wildmenu
+inoremap <C-@> <C-x><C-o>
