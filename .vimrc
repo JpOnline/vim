@@ -94,9 +94,6 @@ set nowrap
 set smartcase
 set ic
 
-" A better colorscheme
-colorscheme relaxedgreen
-
 " To use CTRL+A and CTRL+D to cange tabs
 map <C-A> gT
 map <C-D> gt
@@ -109,3 +106,11 @@ vnoremap <Space> zf
 
 " map CTRL-SPACE to open the wildmenu
 inoremap <C-@> <C-x><C-o>
+
+if has('gui_running')
+    " GUI colors
+    colorscheme custom
+else
+    " Non-GUI (terminal) colors
+    colorscheme relaxedgreen
+endif
