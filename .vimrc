@@ -33,6 +33,7 @@
 "zb                           redraw, current line at botton of window
 "*			      search forward the word under the cursor
 "£			      search backward the word under the cursor
+"gf			      jumps to the file under the cursor
 
 set showcmd
 set smartcase
