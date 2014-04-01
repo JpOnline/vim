@@ -78,6 +78,7 @@ map <S-R> :w<CR>:!erlc %<CR>
 
 " Show numbers in the left side (to use set relativenumber too)
 set relativenumber
+set number "the line number is showed insted of zero in version 7.4
 
 " shortcut to push the lines down
 map <C-S-O> i<CR><Esc>kA <Esc>
