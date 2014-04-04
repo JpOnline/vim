@@ -106,6 +106,9 @@ imap <C-D> <esc>gti
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
 vnoremap <Space> zf
 
+" set fold method to marker (i.e. uses marker like //{{{)
+set foldmethod=marker
+
 " map CTRL-SPACE to open the wildmenu
 inoremap <C-@> <C-x><C-o>
 
