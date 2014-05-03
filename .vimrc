@@ -34,6 +34,7 @@
 "*			      search forward the word under the cursor
 "£			      search backward the word under the cursor
 "gf			      jumps to the file under the cursor
+"zf			      create fold
 
 set showcmd
 set smartcase
@@ -74,8 +75,9 @@ let $AP_HOST="192.168.0.105"
 " To use shift-e to run codekj
 "map <S-E> :w<CR>:!/usr/bin/python % <CR>
 "map <S-E> :w<CR>:!javac %<CR>:!java TestReceiver<CR>
-map <S-E> :w<CR>:!erlc % & erl<CR>
-map <S-R> :w<CR>:!erlc %<CR>
+"map <S-E> :w<CR>:!erlc % & erl<CR>
+"map <S-R> :w<CR>:!erlc %<CR>
+map <S-E> :w<CR>:!scp % jpd21@raptor.kent.ac.uk:/home/cst/jpd21/public_html<CR>
 
 " Show numbers in the left side (to use set relativenumber too)
 set relativenumber
