@@ -98,6 +98,10 @@ set nowrap
 set smartcase
 set ic
 
+" remap add and subtract number by 1 to - and +
+noremap + <C-a> 
+noremap - <C-x> 
+
 " To use CTRL+A and CTRL+D to cange tabs
 map <C-A> gT
 map <C-D> gt
