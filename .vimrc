@@ -35,6 +35,8 @@
 "£			      search backward the word under the cursor
 "gf			      jumps to the file under the cursor
 "zf			      create fold
+"H, M and L		      highest, midle and lowest line in the window
+"~			      Turn the letter under the cursor upper case
 
 set showcmd
 set smartcase
@@ -84,8 +86,8 @@ set relativenumber
 set number "the line number is showed insted of zero in version 7.4
 
 " shortcut to push the lines down
-map <C-S-O> i<CR><Esc>kA <Esc>
-imap <C-S-O> <CR><Esc>k
+map <leader>o i<CR><Esc>kA <Esc>
+imap <leader>o <CR><Esc>kA
 
 " shortcut to adjust beginnings of functions just putting {} after the )
 imap {} {<CR>}<Esc>ko
@@ -98,9 +100,12 @@ set nowrap
 set smartcase
 set ic
 
+" Highlighted search (:noh to unhighlight)
+set hlsearch
+
 " remap add and subtract number by 1 to - and +
-noremap + <C-a> 
-noremap - <C-x> 
+noremap + <C-a>h 
+noremap - <C-x>h 
 
 " To use CTRL+A and CTRL+D to cange tabs
 map <C-A> gT
