@@ -120,8 +120,11 @@ vnoremap <Space> zf
 " set fold method to marker (i.e. uses marker like //{{{)
 set foldmethod=marker
 
+" Fold html tag
+nnoremap <leader>ft Vatzf
+
 " map CTRL-SPACE to open the wildmenu
-inoremap <C-@> <C-x><C-o>
+inoremap <C-@> <C-x><C-o> //}}}
 
 if has('gui_running')
     " GUI colors
@@ -130,3 +133,13 @@ else
     " Non-GUI (terminal) colors
     colorscheme relaxedgreen
 endif
+
+" Open vimrc in a split view
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" reload vimrc without restarting
+nnoremap <leader>er :so $MYVIMRC<cr>:noh<cr>
+
+" To start to write after a end of function
+inoremap <leader>u <Esc>/[)}\]>]<CR>:noh<CR>a
+nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
