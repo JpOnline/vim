@@ -42,7 +42,11 @@ set showcmd
 set smartcase
 set autoindent
 set cindent shiftwidth=4
+set tabstop=4
 set smartindent
+
+"Plugin manager
+execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
