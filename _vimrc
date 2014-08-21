@@ -53,7 +53,7 @@ filetype plugin indent on
 
 "Better copy paste
 set pastetoggle=<f2>
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 "torna a sequencia "jk" o novo "esc"
 imap jk <esc>
