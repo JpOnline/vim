@@ -1,4 +1,4 @@
-"	Comandos Importantes:
+"	                Comandos Importantes:
 "u                            undo
 "o                            pula linha e vai pro modo inserção
 ":set ic                      faz com que a busa ignore maiúsculas e minúsculas
@@ -28,15 +28,16 @@
 "vim -S ~/seesion.vim         inicia vim com seesion
 "CTRl-F                       Page down
 "CTRL-B                       Page up
-"zt			      redraw, current line at top of window
+"zt			                  redraw, current line at top of window
 "zz                           redraw, current line at center of window
 "zb                           redraw, current line at botton of window
-"*			      search forward the word under the cursor
-"£			      search backward the word under the cursor
-"gf			      jumps to the file under the cursor
-"zf			      create fold
-"H, M and L		      highest, midle and lowest line in the window
-"~			      Turn the letter under the cursor upper case
+"*			                  search forward the word under the cursor
+"£			                  search backward the word under the cursor
+"gf			                  jumps to the file under the cursor
+"zf			                  create fold
+"H, M and L		              highest, midle and lowest line in the window
+"~			                  Turn the letter under the cursor upper case
+"<C-r>*                       Paste the clipboard register
 
 set showcmd
 set smartcase
@@ -53,7 +54,10 @@ filetype plugin indent on
 
 "Better copy paste
 set pastetoggle=<f2>
-" set clipboard=unnamedplus
+" For Windows
+" 	set clipboard=unnamedplus
+" " For Linux
+"  	set clipboard=unnamedplus
 
 "torna a sequencia "jk" o novo "esc"
 imap jk <esc>
@@ -125,19 +129,20 @@ vnoremap <Space> zf
 
 " set fold method to marker (i.e. uses marker like //{{{)
 set foldmethod=marker
+"}}}
 
 " Fold html tag
 nnoremap <leader>ft Vatzf
 
 " map CTRL-SPACE to open the wildmenu
-inoremap <C-@> <C-x><C-o> //}}}
+inoremap <C-@> <C-x><C-o>
 
 if has('gui_running')
     " GUI colors
-    colorscheme custom
+    colorscheme custom_(based_on_jellybeans)
 else
     " Non-GUI (terminal) colors
-    colorscheme relaxedgreen
+    colorscheme custom_(based_on_jellybeans)
 endif
 
 " Open vimrc in a split view
@@ -149,3 +154,7 @@ nnoremap <leader>er :so $MYVIMRC<cr>:noh<cr>
 " To start to write after a end of function
 inoremap <leader>u <Esc>/[)}\]>]<CR>:noh<CR>a
 nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
+
+"set up windows
+set guifont=Inconsolata:h12
+set lines=56 columns=220
