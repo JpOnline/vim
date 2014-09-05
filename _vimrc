@@ -135,7 +135,8 @@ set foldmethod=marker
 nnoremap <leader>ft Vatzf
 
 " map CTRL-SPACE to open the wildmenu
-inoremap <C-@> <C-x><C-o>
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
 
 if has('gui_running')
     " GUI colors
@@ -158,3 +159,12 @@ nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
 "set up windows
 set guifont=Inconsolata:h12
 set lines=56 columns=220
+set cursorline
+
+"Tagbar plugin set up
+let g:tagbar_ctags_bin = 'Z:\ctags58\ctags.exe'
+set updatetime=500
+
+"shortcuts for NerdTree and Tagbar
+nmap <leader>8 :TagbarToggle<CR>
+nmap <leader>3 :NERDTreeToggle<CR>
