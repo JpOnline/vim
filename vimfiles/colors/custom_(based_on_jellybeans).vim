@@ -54,7 +54,7 @@ hi TabLineSel guifg=#f2f2f2 guibg=#52521b guisp=#52521b gui=italic ctermfg=255 c
 hi Number guifg=#91d184 guibg=NONE guisp=NONE gui=NONE ctermfg=114 ctermbg=NONE cterm=NONE
 hi Boolean guifg=#80bd97 guibg=NONE guisp=NONE gui=NONE ctermfg=108 ctermbg=NONE cterm=NONE
 hi Operator guifg=#84c990 guibg=#151515 guisp=#151515 gui=NONE ctermfg=114 ctermbg=233 cterm=NONE
-hi CursorLine guifg=#c8d1d4 guibg=#202b20 guisp=#202b20 gui=NONE ctermfg=152 ctermbg=235 cterm=NONE
+hi CursorLine guifg=NONE guibg=#202b20 guisp=#202b20 gui=NONE ctermfg=152 ctermbg=235 cterm=NONE
 "hi Union -- no settings --
 hi TabLineFill guifg=#9098a0 guibg=NONE guisp=NONE gui=NONE ctermfg=247 ctermbg=NONE cterm=NONE
 hi Question guifg=#e3e022 guibg=NONE guisp=NONE gui=NONE ctermfg=184 ctermbg=NONE cterm=NONE
