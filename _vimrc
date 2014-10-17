@@ -168,3 +168,7 @@ set updatetime=500
 "shortcuts for NerdTree and Tagbar
 nmap <leader>8 :TagbarToggle<CR>
 nmap <leader>3 :NERDTreeToggle<CR>
+
+"creating html tags
+imap \ct <ESC>^ywi<<ESC>A></<ESC>pa><ESC>F<i
+imap \cT <ESC>^ywi<<ESC>A></<ESC>pa><ESC>F<i<CR><ESC>ko<C-t>
