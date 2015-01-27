@@ -143,7 +143,7 @@ if has('gui_running')
     colorscheme custom_(based_on_jellybeans)
 else
     " Non-GUI (terminal) colors
-    colorscheme custom_(based_on_jellybeans)
+    colorscheme desert
 endif
 
 " Open vimrc in a split view
@@ -172,3 +172,21 @@ nmap <leader>3 :NERDTreeToggle<CR>
 "creating html tags
 imap \ct <ESC>^ywi<<ESC>A></<ESC>pa><ESC>F<i
 imap \cT <ESC>^ywi<<ESC>A></<ESC>pa><ESC>F<i<CR><ESC>ko<C-t>
+
+"Copy and paste based on the common register with the system
+nnoremap \v "*p
+nnoremap \c "*y
+
+function! MyFoldText()
+    let indent_level = indent(v:foldstart)
+    let indent = repeat(' ',indent_level - 1)
+	let line = substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+	let foldtextstart = strpart('+' . indent . line, 0, (winwidth(0)*3)/4)
+	let lines_count = v:foldend - v:foldstart + 1
+	let lines_count_text = '[ ' . printf("%10s", lines_count . ' lines') . ' ]'
+	let foldtextlength = strlen(substitute(foldtextstart . lines_count_text, '.', 'x', 'g')) + &foldcolumn
+	let foldchar = matchstr(&fillchars, 'fold:\zs.')
+	return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength-indent_level) . lines_count_text
+endfunction
+
+set foldtext=MyFoldText()
