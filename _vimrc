@@ -38,6 +38,7 @@
 "H, M and L		              highest, midle and lowest line in the window
 "~			                  Turn the letter under the cursor upper case
 "<C-r>*                       Paste the clipboard register
+":echo $HOME				  Show vimrc location
 
 set showcmd
 set smartcase
@@ -47,7 +48,7 @@ set tabstop=4
 set smartindent
 
 "Plugin manager
-execute pathogen#infect()
+"execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
@@ -143,7 +144,7 @@ if has('gui_running')
     colorscheme custom_(based_on_jellybeans)
 else
     " Non-GUI (terminal) colors
-    colorscheme desert
+    colorscheme custom_(based_on_jellybeans)
 endif
 
 " Open vimrc in a split view
@@ -158,7 +159,7 @@ nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
 
 "set up windows
 set guifont=Inconsolata:h12
-set lines=56 columns=220
+set lines=40 columns=180
 set cursorline
 
 "Tagbar plugin set up
