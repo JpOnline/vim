@@ -1,4 +1,4 @@
-"	                Comandos Importantes:
+"	                Comandos Importantes:"{{{
 "u                            undo
 "o                            pula linha e vai pro modo inserção
 ":set ic                      faz com que a busa ignore maiúsculas e minúsculas
@@ -39,106 +39,105 @@
 "~			                  Turn the letter under the cursor upper case
 "<C-r>*                       Paste the clipboard register
 ":echo $HOME				  Show vimrc location
+":vimgrep /palavra/j **/*	procura por todas as ocorrências de "palavra" nos
+"arquivos do diretório atual
+"}}}
 
 set showcmd
 set smartcase
 set autoindent
-set cindent shiftwidth=4
-set tabstop=4
+set cindent shiftwidth=2
+set tabstop=2
 set smartindent
+set expandtab
 
-"Plugin manager
-"execute pathogen#infect()
+"Plugin manager"{{{
+execute pathogen#infect()
+"}}}
 
 syntax on
 filetype plugin indent on
 
-"Better copy paste
-set pastetoggle=<f2>
-" For Windows
-" 	set clipboard=unnamedplus
-" " For Linux
-"  	set clipboard=unnamedplus
-
-"torna a sequencia "jk" o novo "esc"
+"torna a sequencia "jk" o novo "esc""{{{
 imap jk <esc>
 vmap jk <esc>
-
-" bind Ctrl-<movement> to move between wndows
+"}}}
+" bind Ctrl-<movement> to move between wndows"{{{
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-
-" don't automatically wrap text when typing
+"}}}
+" don't automatically wrap text when typing"{{{
 set fo-=t
-
-" Disable backup and swap files
+"}}}
+" Disable backup and swap files"{{{
 set nobackup
 set nowritebackup
 set noswapfile
-
-" turn mouse on (good to resize wondows)
+"}}}
+" turn mouse on (good to resize wondows)"{{{
 set mouse=a
-
-" To debug android remotely
-let $AP_PORT=56368
-let $AP_HOST="192.168.0.105"
-
-" To use shift-e to run codekj
+"}}}
+" To debug android remotely (disabled)"{{{
+" let $AP_PORT=56368
+" let $AP_HOST="192.168.0.105"
+"}}}
+" To use shift-e to run codekj (disabled)"{{{
 "map <S-E> :w<CR>:!/usr/bin/python % <CR>
 "map <S-E> :w<CR>:!javac %<CR>:!java TestReceiver<CR>
 "map <S-E> :w<CR>:!erlc % & erl<CR>
 "map <S-R> :w<CR>:!erlc %<CR>
-map <S-E> :w<CR>:!scp % jpd21@raptor.kent.ac.uk:/home/cst/jpd21/public_html<CR>
-
-" Show numbers in the left side (to use set relativenumber too)
+" map <S-E> :w<CR>:!scp % jpd21@raptor.kent.ac.uk:/home/cst/jpd21/public_html<CR>
+"}}}
+" Show numbers in the left side (to use set relativenumber too)"{{{
 set relativenumber
 set number "the line number is showed insted of zero in version 7.4
-
-" shortcut to push the lines down
+"}}}
+" shortcut to push the lines down"{{{
 map <leader>o i<CR><Esc>kA <Esc>
 imap <leader>o <CR><Esc>kA
-
-" shortcut to adjust beginnings of functions just putting {} after the )
-imap {} {<CR>}<Esc>ko
-
-" Allow horizontal scrolling
+"}}}
+" shortcut to adjust beginnings of functions just putting {} after the )"{{{
+imap {} {<CR>}<Esc>k
+"}}}
+" Allow horizontal scrolling"{{{
 set nowrap
-
-" case insensitive with lower case and case sensitive with some letter in
+"}}}
+" case insensitive with lower case and case sensitive with some letter in"{{{
 " upper case
 set smartcase
 set ic
-
-" Highlighted search (:noh to unhighlight)
+"}}}
+" Highlighted search (:noh to unhighlight)"{{{
 set hlsearch
-
-" remap add and subtract number by 1 to - and +
+"}}}
+" remap add and subtract number by 1 to - and +"{{{
 noremap + <C-a>h 
 noremap - <C-x>h 
-
-" To use CTRL+A and CTRL+D to cange tabs
+"}}}
+" To use CTRL+A and CTRL+D to cange tabs"{{{
 map <C-A> gT
 map <C-D> gt
 imap <C-A> <esc>gTi
 imap <C-D> <esc>gti
-
-" map space to create/open/close fold
+"}}}
+" map space to create/open/close fold"{{{
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
 vnoremap <Space> zf
-
+"}}}
 " set fold method to marker (i.e. uses marker like //{{{)
 set foldmethod=marker
 "}}}
 
-" Fold html tag
+" Fold html tag"{{{
 nnoremap <leader>ft Vatzf
-
-" map CTRL-SPACE to open the wildmenu
+"}}}
+" map CTRL-SPACE to open the wildmenu"{{{
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
-
+"}}}
+" Load color"{{{
 if has('gui_running')
     " GUI colors
     colorscheme custom_(based_on_jellybeans)
@@ -146,38 +145,35 @@ else
     " Non-GUI (terminal) colors
     colorscheme custom_(based_on_jellybeans)
 endif
-
-" Open vimrc in a split view
+"}}}
+" Open vimrc in a split view"{{{
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-
-" reload vimrc without restarting
+"}}}
+" reload vimrc without restarting"{{{
 nnoremap <leader>er :so $MYVIMRC<cr>:noh<cr>
-
-" To start to write after a end of function
+"}}}
+" To start to write after a end of function"{{{
 inoremap <leader>u <Esc>/[)}\]>]<CR>:noh<CR>a
 nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
-
-"set up windows
+"}}}
+"set up windows sizes and fonts"{{{
 set guifont=Inconsolata:h12
-set lines=40 columns=180
+set lines=40 columns=120
 set cursorline
-
-"Tagbar plugin set up
+"}}}
+"Tagbar plugin set up"{{{
 let g:tagbar_ctags_bin = 'Z:\ctags58\ctags.exe'
 set updatetime=500
-
-"shortcuts for NerdTree and Tagbar
+"}}}
+"shortcuts for NerdTree and Tagbar"{{{
 nmap <leader>8 :TagbarToggle<CR>
 nmap <leader>3 :NERDTreeToggle<CR>
-
-"creating html tags
-imap \ct <ESC>^ywi<<ESC>A></<ESC>pa><ESC>F<i
-imap \cT <ESC>^ywi<<ESC>A></<ESC>pa><ESC>F<i<CR><ESC>ko<C-t>
-
-"Copy and paste based on the common register with the system
-nnoremap \v "*p
-nnoremap \c "*y
-
+"}}}
+"creating html tags"{{{
+imap \ct <ESC>^yWi<<ESC>A></<ESC>pa><ESC>F<i
+imap \cT <ESC>^yWi<<ESC>A></<ESC>pa><ESC>F<i<CR><ESC>ko<C-t>
+"}}}
+"{{{ Fold function to replace what's written
 function! MyFoldText()
     let indent_level = indent(v:foldstart)
     let indent = repeat(' ',indent_level - 1)
@@ -188,9 +184,10 @@ function! MyFoldText()
 	let foldtextlength = strlen(substitute(foldtextstart . lines_count_text, '.', 'x', 'g')) + &foldcolumn
 	let foldchar = matchstr(&fillchars, 'fold:\zs.')
 	return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength-indent_level) . lines_count_text
-endfunction
+endfunction 
 
 set foldtext=MyFoldText()
+"}}}
 
 "Show the syntax group of an element, useful to change colorschemes."{{{
 " adds to statusline
@@ -205,4 +202,18 @@ function! <SID>SynStack()
         return
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc"}}}
+endfunc 
+"}}}
+
+"TO always work with utf-8"{{{
+set encoding=utf-8
+set fileencoding=utf-8
+"}}}
+"Fix syntax"{{{
+noremap <Leader><Leader> <Esc>:syntax sync fromstart<CR>
+inoremap <Leader><Leader> <C-o>:syntax sync fromstart<CR>
+"}}}
+"Correct identation according to previous line"{{{
+noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
+noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
+"}}}
