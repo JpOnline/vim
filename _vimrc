@@ -217,3 +217,7 @@ inoremap <Leader><Leader> <C-o>:syntax sync fromstart<CR>
 noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
 noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
 "}}}
+"Mostra caracteres invisíveis não desejáveis."{{{
+set listchars=tab:>-,trail:.,extends:#,nbsp:.
+set list
+"}}}
