@@ -41,23 +41,32 @@
 set showcmd
 set smartcase
 set autoindent
-set cindent shiftwidth=4
+set cindent shiftwidth=2
+set tabstop=2
 set smartindent
-filetype plugin indent on
+set expandtab
 
+"Plugin manager"{{{
+execute pathogen#infect()
+"}}}
+
+syntax on
+filetype plugin indent on
 "Better copy paste
 set pastetoggle=<f2>
-set clipboard=unnamedplus
+set clipboard=unnamed
+
+let mapleader=","
 
 "torna a sequencia "jk" o novo "esc"
 imap jk <esc>
 vmap jk <esc>
 
 " bind Ctrl-<movement> to move between wndows
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
 
 " don't automatically wrap text when typing
 set fo-=t
@@ -71,22 +80,22 @@ set noswapfile
 set mouse=a
 
 " To debug android remotely
-let $AP_PORT=56368
-let $AP_HOST="192.168.0.105"
+" let $AP_PORT=56368
+" let $AP_HOST="192.168.0.105"
 
 " To use shift-e to run codekj
 "map <S-E> :w<CR>:!/usr/bin/python % <CR>
 "map <S-E> :w<CR>:!javac %<CR>:!java TestReceiver<CR>
 "map <S-E> :w<CR>:!erlc % & erl<CR>
 "map <S-R> :w<CR>:!erlc %<CR>
-map <S-E> :w<CR>:!scp % jpd21@raptor.kent.ac.uk:/home/cst/jpd21/public_html<CR>
+" map <S-E> :w<CR>:!scp % jpd21@raptor.kent.ac.uk:/home/cst/jpd21/public_html<CR>
 
 " Show numbers in the left side (to use set relativenumber too)
+" set number "the line number is showed insted of zero in version 7.4
 set relativenumber
-set number "the line number is showed insted of zero in version 7.4
 
 " shortcut to push the lines down
-map <leader>o i<CR><Esc>kA <Esc>
+map <leader>o i<CR><Esc>kA<Esc>
 imap <leader>o <CR><Esc>kA
 
 " shortcut to adjust beginnings of functions just putting {} after the )
@@ -107,11 +116,14 @@ set hlsearch
 noremap + <C-a>h 
 noremap - <C-x>h 
 
-" To use CTRL+A and CTRL+D to cange tabs
+" To use CTRL+A and CTRL+F to cange tabs
 map <C-A> gT
-map <C-D> gt
+map <C-W> gt
 imap <C-A> <esc>gTi
-imap <C-D> <esc>gti
+imap <C-W> <esc>gti
+
+" Toggle terminal
+map <C-D> :sh<CR>
 
 " map space to create/open/close fold
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
@@ -131,7 +143,7 @@ if has('gui_running')
     colorscheme custom
 else
     " Non-GUI (terminal) colors
-    colorscheme relaxedgreen
+    colorscheme custom_(based_on_jellybeans)
 endif
 
 " Open vimrc in a split view
@@ -143,3 +155,50 @@ nnoremap <leader>er :so $MYVIMRC<cr>:noh<cr>
 " To start to write after a end of function
 inoremap <leader>u <Esc>/[)}\]>]<CR>:noh<CR>a
 nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
+"
+"Tagbar plugin set up"{{{
+let g:tagbar_ctags_bin = 'Z:\ctags58\ctags.exe'
+set updatetime=500
+"shortcuts for NerdTree and Tagbar"{{{
+nmap <leader>8 :TagbarToggle<CR>
+nmap <leader>3 :NERDTreeToggle<CR>
+"}}}
+"creating html tags"{{{
+imap \ct <ESC>^yWi<<ESC>A></<ESC>pa><ESC>F<i
+imap \cT <ESC>^yWi<<ESC>A></<ESC>pa><ESC>F<i<CR><ESC>ko<C-t>
+"}}}
+"{{{ Fold function to replace what's written
+function! MyFoldText()
+    let indent_level = indent(v:foldstart)
+    let indent = repeat(' ',indent_level - 1)
+	let line = substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+	let foldtextstart = strpart('+' . indent . line, 0, (winwidth(0)*3)/4)
+	let lines_count = v:foldend - v:foldstart + 1
+	let lines_count_text = '[ ' . printf("%10s", lines_count . ' lines') . ' ]'
+	let foldtextlength = strlen(substitute(foldtextstart . lines_count_text, '.', 'x', 'g')) + &foldcolumn
+	let foldchar = matchstr(&fillchars, 'fold:\zs.')
+	return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength-indent_level) . lines_count_text
+endfunction
+set foldtext=MyFoldText()
+"}}}
+"TO always work with utf-8"{{{
+set encoding=utf-8
+set fileencoding=utf-8
+"}}}
+"Fix syntax"{{{
+noremap <Leader><Leader> <Esc>:syntax sync fromstart<CR>
+inoremap <Leader><Leader> <C-o>:syntax sync fromstart<CR>
+"}}}
+"Correct identation according to previous line"{{{
+noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
+noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
+"}}}
+"Mostra caracteres invisíveis não desejáveis."{{{
+set listchars=tab:>-,trail:.,extends:#,nbsp:.
+set list
+"}}}
+"}}}
+"creating html tags"{{{
+imap <Leader>ct <ESC>^yWi<<ESC>A></<ESC>pa><ESC>F<i
+imap <Leader>cT <ESC>^yWi<<ESC>A></<ESC>pa><ESC>F<i<CR><ESC>ko<C-t>
+"}}}
