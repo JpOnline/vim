@@ -113,6 +113,8 @@
 "~
 "Turn the letter under the cursor upper case
 "
+":vimgrep /<pattern>/gj **/*
+"Search recursively through files in folder.
 "}}}
 
 set showcmd
