@@ -114,7 +114,14 @@
 "Turn the letter under the cursor upper case
 "
 ":vimgrep /<pattern>/gj **/*
-"Search recursively through files in folder.
+"Search recursively through files in folder, then use cw to open result
+"
+"In shell, lists the possible fonts
+"xlsfonts
+"To be used with
+":set guifont=
+set guifont=10x20
+"
 "}}}
 
 set showcmd
@@ -133,7 +140,7 @@ syntax on
 filetype plugin indent on
 "Better copy paste
 set pastetoggle=<f2>
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 let mapleader=","
 
@@ -201,7 +208,7 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
 vnoremap <Space> zf
 "}}}
 " set fold method to marker (i.e. uses marker like //{{{)
-set foldmethod=marker
+set foldmethod=indent
 " }}}
 "{{{ Fold function to replace what's written
 function! MyFoldText()
@@ -273,7 +280,7 @@ imap <Leader>pf : function(){//{{{<CR>},//}}}<ESC>k$
 "}}}
 "
 "set up windows sizes and fonts"{{{
-set guifont=Inconsolata:h18
+set guifont=Inconsolata:h36
 set lines=40 columns=90
 set cursorline
 "}}}
