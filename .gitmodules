@@ -19,3 +19,6 @@
 [submodule "vimfiles/bundle/tagbar"]
 	path = vimfiles/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
+[submodule "vimfiles/bundle/cljfmt"]
+	path = vimfiles/bundle/cljfmt
+	url = https://github.com/venantius/vim-cljfmt.git

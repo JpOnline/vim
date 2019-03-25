@@ -122,6 +122,22 @@
 ":set guifont=
 set guifont=10x20
 "
+":%s/{pattern}/{string}/gc
+"Substitutes pattern for string, g is to replace in the whole line and c is to
+"confirm in every replace.
+"
+"Ctrl-t
+"indent in insert mode
+"
+"ctrl-d
+"unindent in insert mode
+"
+"g+
+"undo tree, move chronologically forward
+"
+"g-
+"undo tree, move chronologically backward
+"
 "}}}
 
 set showcmd
@@ -166,7 +182,7 @@ set noswapfile
 set mouse=a
 "}}}
 " To use shift-e to run codekj (disabled)"{{{
-noremap <S-E> :w<CR>:RunBackgroundCommand polymer test<CR>
+noremap <S-E> :w<CR>:Eval<CR>
 " noremap <S-E> :silent !polymer test > .vim/tmpExecutionOutput &<CR> :vsp .vim/tmpExecutionOutput<CR><c-w>r<c-w>h
 "}}}
 " Show numbers in the left side (to use set relativenumber too){{{
