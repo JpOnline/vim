@@ -138,6 +138,11 @@ set guifont=10x20
 "g-
 "undo tree, move chronologically backward
 "
+":tab split
+"Duplica tab
+"
+":<ctrl-f>
+"Edita comando no normal mode (bom pra copy paste e manipulação de registros)
 "}}}
 
 set showcmd
@@ -343,3 +348,5 @@ command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundComm
 function! GetCharUnderCursor()
   return matchstr(getline('.'), '\%' . col('.') . 'c.')
 endfunction"}}}
+
+set tags=tags
