@@ -143,6 +143,11 @@ set guifont=10x20
 "
 ":<ctrl-f>
 "Edita comando no normal mode (bom pra copy paste e manipulação de registros)
+"
+":tabm 0       move current tab to first
+":tabm         move current tab to last
+":tabm {i}     move current tab to position i+1
+"{i}gt         go to tab in position i
 "}}}
 
 set showcmd
@@ -179,15 +184,19 @@ noremap <c-h> <c-w>h
 set fo-=t
 "}}}
 " Disable backup and swap files"{{{
-set nobackup
-set nowritebackup
-set noswapfile
+" set nobackup
+" set nowritebackup
+" set noswapfile
 "}}}
+"Change the location of backup files
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
 " turn mouse on (good to resize wondows)"{{{
 set mouse=a
 "}}}
 " To use shift-e to run codekj (disabled)"{{{
-noremap <S-E> :w<CR>:Eval<CR>
+noremap <S-E> :Eval<CR>
 " noremap <S-E> :silent !polymer test > .vim/tmpExecutionOutput &<CR> :vsp .vim/tmpExecutionOutput<CR><c-w>r<c-w>h
 "}}}
 " Show numbers in the left side (to use set relativenumber too){{{
@@ -350,3 +359,7 @@ function! GetCharUnderCursor()
 endfunction"}}}
 
 set tags=tags
+
+map <leader>cc :TComment<CR>
+
+map c<leader> :w<CR>:RunTests<CR>
