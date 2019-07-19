@@ -363,3 +363,6 @@ set tags=tags
 map <leader>cc :TComment<CR>
 
 map c<leader> :w<CR>:RunTests<CR>
+
+" Prevents from saving twice. Good for hot reloading
+set backupcopy=yes
