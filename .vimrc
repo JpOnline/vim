@@ -219,6 +219,9 @@ set ic
 " Highlighted search (:noh to unhighlight){{{
 set hlsearch
 
+" Highlighted search while it's been typed
+" set incsearch
+
 " remap add and subtract number by 1 to - and +}}}
 " remap add and subtract number by 1 to - and +"{{{
 noremap + <C-a>h
@@ -276,6 +279,9 @@ nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
 "shortcut for NerdTree"{{{
 nmap <leader>3 :NERDTreeToggle<CR>
 "}}}
+
+nmap <leader>8 :Tagbar<CR>
+
 "creating html tags"{{{
 function! CreateHTMLTag()
   execute "normal! ^yWi<\<ESC>A></\<ESC>p"
@@ -301,7 +307,7 @@ noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
 noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
 "}}}
 "Mostra caracteres invisíveis não desejáveis."{{{
-set listchars=tab:>-,trail:.,extends:#,nbsp:.
+set listchars=tab:>-,trail:_,extends:#,nbsp:_
 set list
 "}}}
 "
@@ -363,6 +369,12 @@ set tags=tags
 map <leader>cc :TComment<CR>
 
 map c<leader> :w<CR>:RunTests<CR>
+map c.<leader> :w<CR>:.RunTests<CR>
 
 " Prevents from saving twice. Good for hot reloading
 set backupcopy=yes
+
+set pastetoggle=<leader>p
+
+" Make ctrl-p ignore files and dirs of .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
