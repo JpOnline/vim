@@ -115,6 +115,7 @@
 "
 ":vimgrep /<pattern>/gj **/*
 "Search recursively through files in folder, then use cw to open result
+"Use noautocmd to be faster, like :noautocmd vimgrep...
 "
 "In shell, lists the possible fonts
 "xlsfonts
@@ -378,3 +379,9 @@ set pastetoggle=<leader>p
 
 " Make ctrl-p ignore files and dirs of .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" Close tabs to the right
+noremap <leader>$$ :tabnext<CR>:.,$tabdo :tabclose<CR>
+
+" shortcut for vimgrep
+map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj `git ls-files`" <Bar> cw<CR>
