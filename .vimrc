@@ -117,6 +117,9 @@
 "Search recursively through files in folder, then use cw to open result
 "Use noautocmd to be faster, like :noautocmd vimgrep...
 "
+"Example of good search cmd
+"noautocmd vimgrep //gj `git ls-files`
+"
 "In shell, lists the possible fonts
 "xlsfonts
 "To be used with
@@ -385,3 +388,4 @@ noremap <leader>$$ :tabnext<CR>:.,$tabdo :tabclose<CR>
 
 " shortcut for vimgrep
 map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj `git ls-files`" <Bar> cw<CR>
+map <leader>as :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls-files`" <Bar> cw<CR>
