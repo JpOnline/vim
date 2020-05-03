@@ -152,6 +152,13 @@ set guifont=10x20
 ":tabm         move current tab to last
 ":tabm {i}     move current tab to position i+1
 "{i}gt         go to tab in position i
+"
+"Pra configurar o copy paste no tmux:
+"- Primeiro copiar as seguintes 2 linhas para ~/.tmux.conf
+"# Automatically copy tmux selection to X clipboard
+"bind-key -n C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+"- Então instalar xclip com
+"sudo apt-get install xclip
 "}}}
 
 set showcmd
@@ -389,3 +396,7 @@ noremap <leader>$$ :tabnext<CR>:.,$tabdo :tabclose<CR>
 " shortcut for vimgrep
 map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj `git ls-files`" <Bar> cw<CR>
 map <leader>as :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls-files`" <Bar> cw<CR>
+
+" shortcut for toggling paredit
+map <leader>cp :call PareditToggle()<CR>
+imap <leader>cp <ESC>:call PareditToggle()<CR>li
