@@ -239,10 +239,10 @@ noremap + <C-a>h
 noremap - <C-x>h
 "}}}
 " To use CTRL+A and CTRL+W to cange tabs{{{
-noremap <C-A> gT
-noremap <C-W> gt
-imap <C-A> <esc>gTi
-imap <C-W> <esc>gti
+noremap <S-q> gT
+noremap <C-a> gt
+" imap <C-A> <esc>gTi
+" imap <C-W> <esc>gti
 "}}}
 " Toggle terminal{{{
 map <C-D> :sh<CR>
