@@ -318,7 +318,8 @@ noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
 noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
 "}}}
 "Mostra caracteres invisíveis não desejáveis."{{{
-set listchars=tab:>-,trail:_,extends:#,nbsp:_
+" set listchars=tab:>-,extends:#,nbsp:_,trail:_
+set listchars=tab:>-,extends:#,nbsp:_ "Better not to see trailing spaces otherwise I will want to fix everything
 set list
 "}}}
 "
@@ -400,3 +401,9 @@ map <leader>as :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls
 " shortcut for toggling paredit
 map <leader>cp :call PareditToggle()<CR>
 imap <leader>cp <ESC>:call PareditToggle()<CR>li
+
+"Pra desligar automaticamente com script em ~/shutdown-test
+"autocmd BufWritePost * silent! !touch ~/now
+
+set nocursorline
+set cursorcolumn
