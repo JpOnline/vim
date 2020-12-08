@@ -407,3 +407,6 @@ imap <leader>cp <ESC>:call PareditToggle()<CR>li
 
 set nocursorline
 set cursorcolumn
+
+" Busca em todo o projeto
+command -nargs=1 Sch noautocmd vimgrep /<args>/gj `git ls-files` | cw
