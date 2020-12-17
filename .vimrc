@@ -410,3 +410,7 @@ set cursorcolumn
 
 " Busca em todo o projeto
 command -nargs=1 Sch noautocmd vimgrep /<args>/gj `git ls-files` | cw
+
+" To avoid git diff message \ No newline at end of file
+set binary
+set noeol
