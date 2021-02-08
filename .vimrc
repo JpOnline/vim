@@ -204,10 +204,10 @@ set backupdir=.backup/,~/.backup/,/tmp//
 set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 " turn mouse on (good to resize wondows)"{{{
-set mouse=a
+set mouse-=a
 "}}}
 " To use shift-e to run codekj (disabled)"{{{
-noremap <S-E> :Eval<CR>
+noremap <S-E> :'<,'>Eval<CR>
 " noremap <S-E> :silent !polymer test > .vim/tmpExecutionOutput &<CR> :vsp .vim/tmpExecutionOutput<CR><c-w>r<c-w>h
 "}}}
 " Show numbers in the left side (to use set relativenumber too){{{
@@ -380,7 +380,8 @@ set tags=tags
 
 map <leader>cc :TComment<CR>
 
-map c<leader> :w<CR>:RunTests<CR>
+" map c<leader> :w<CR>:RunTests<CR>
+map c<leader> :Eval (cljs.test/run-tests)<CR>
 map c.<leader> :w<CR>:.RunTests<CR>
 
 " Prevents from saving twice. Good for hot reloading
@@ -411,6 +412,4 @@ set cursorcolumn
 " Busca em todo o projeto
 command -nargs=1 Sch noautocmd vimgrep /<args>/gj `git ls-files` | cw
 
-" To avoid git diff message \ No newline at end of file
-set binary
-set noeol
+let NERDTreeCustomOpenArgs = {'file':{'reuse':'all', 'where': 't'}}

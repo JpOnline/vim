@@ -22,3 +22,6 @@
 [submodule "vimfiles/bundle/cljfmt"]
 	path = vimfiles/bundle/cljfmt
 	url = https://github.com/venantius/vim-cljfmt.git
+[submodule "vimfiles/bundle/vim-fireplace"]
+	path = vimfiles/bundle/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace
