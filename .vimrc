@@ -160,6 +160,17 @@ set guifont=10x20
 "- Então instalar xclip com
 "sudo apt-get install xclip
 "}}}
+"
+"Open a new vim split from an existing buffer
+":ls<cr>:vertical sb<space>
+"
+"Split lines by pattern
+":'<,'>s/<pattern>/\r/g
+"
+"Pattern that is not 'A'
+"[^A]
+
+noremap <leader>vsb :ls<cr>:vertical sb<space>
 
 set showcmd
 set smartcase
@@ -329,7 +340,7 @@ imap <Leader>pf : function(){//{{{<CR>},//}}}<ESC>k$
 "
 "set up windows sizes and fonts"{{{
 set guifont=Inconsolata:h36
-set lines=40 columns=90
+set lines=50 columns=122
 set cursorline
 "}}}
 "
@@ -380,8 +391,8 @@ set tags=tags
 
 map <leader>cc :TComment<CR>
 
-" map c<leader> :w<CR>:RunTests<CR>
-map c<leader> :Eval (cljs.test/run-tests)<CR>
+map c<leader> :w<CR>:RunTests<CR>
+" map c<leader> :Eval (cljs.test/run-tests)<CR>
 map c.<leader> :w<CR>:.RunTests<CR>
 
 " Prevents from saving twice. Good for hot reloading
@@ -412,4 +423,4 @@ set cursorcolumn
 " Busca em todo o projeto
 command -nargs=1 Sch noautocmd vimgrep /<args>/gj `git ls-files` | cw
 
-let NERDTreeCustomOpenArgs = {'file':{'reuse':'all', 'where': 't'}}
+let NERDTreeCustomOpenArgs = {'file':{'reuse':'all', 'where': 't', 'keepopen': 1}}
