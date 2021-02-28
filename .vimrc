@@ -424,3 +424,26 @@ set cursorcolumn
 command -nargs=1 Sch noautocmd vimgrep /<args>/gj `git ls-files` | cw
 
 let NERDTreeCustomOpenArgs = {'file':{'reuse':'all', 'where': 't', 'keepopen': 1}}
+
+"Use clj-kondo as Clojure linter
+let g:ale_linters = {'clojure': ['clj-kondo']}
+
+function! Myfn2()
+  execute "normal! el "
+  let shortColumn = col('.')
+  execute "normal! i" . repeat(" ", longColumn - shortColumn) . "\<Esc>"
+endfunction
+
+function! Myfn(scope)
+  let longColumn = col('.')
+  execute "normal! j$F "
+  let shortColumn = col('.')
+  execute "normal! i" . repeat(" ", longColumn - shortColumn) . "\<Esc>"
+  echom nr2char(longColumn - shortColumn)
+endfunction
+command -nargs=1 Callmyfn noautocmd call Myfn("<args>")
+nnoremap <silent> <leader>ci :exe "Callmyfn " nr2char(getchar())<cr>
+
+"EasyAlign plugin setup (See https://github.com/junegunn/vim-easy-align)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
