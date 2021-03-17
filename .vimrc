@@ -169,6 +169,9 @@ set guifont=10x20
 "
 "Pattern that is not 'A'
 "[^A]
+"
+"Like * but without \< and \>
+"g*
 
 noremap <leader>vsb :ls<cr>:vertical sb<space>
 
@@ -215,7 +218,7 @@ set backupdir=.backup/,~/.backup/,/tmp//
 set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 " turn mouse on (good to resize wondows)"{{{
-set mouse-=a
+set mouse=a
 "}}}
 " To use shift-e to run codekj (disabled)"{{{
 noremap <S-E> :'<,'>Eval<CR>
