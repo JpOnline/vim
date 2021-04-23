@@ -172,6 +172,9 @@ set guifont=10x20
 "
 "Like * but without \< and \>
 "g*
+"
+" Convert each name_like_this to nameLikeThis in current line. https://vim.fandom.com/wiki/Converting_variables_to_or_from_camel_case
+":s#_\(\l\)#\u\1#g
 
 noremap <leader>vsb :ls<cr>:vertical sb<space>
 
@@ -450,3 +453,10 @@ nnoremap <silent> <leader>ci :exe "Callmyfn " nr2char(getchar())<cr>
 "EasyAlign plugin setup (See https://github.com/junegunn/vim-easy-align)
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+let g:clj_fmt_autosave = 0
+let g:clj_fmt_config = '{:indentation? true, :remove-surrounding-whitespace? true, :remove-trailing-whitespace? true, :remove-consecutive-blank-lines? false, :insert-missing-whitespace? true, :align-associative? true, :indents {#"^\w" [[:inner 0]], #".*" [[:inner 0]]}}'
+
+map <leader>rn :set relativenumber!<CR>
+map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refresh)]) (refresh))<CR>
+map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
