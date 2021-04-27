@@ -25,3 +25,12 @@
 [submodule "vimfiles/bundle/vim-fireplace"]
 	path = vimfiles/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
+[submodule "vimfiles/bundle/ale"]
+	path = vimfiles/bundle/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "vimfiles/bundle/vim-cljfmt"]
+	path = vimfiles/bundle/vim-cljfmt
+	url = https://github.com/venantius/vim-cljfmt.git
+[submodule "vimfiles/bundle/vim-easy-align"]
+	path = vimfiles/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
