@@ -175,6 +175,9 @@ set guifont=10x20
 "
 " Convert each name_like_this to nameLikeThis in current line. https://vim.fandom.com/wiki/Converting_variables_to_or_from_camel_case
 ":s#_\(\l\)#\u\1#g
+"
+"ge
+"Like b, but set the cursor in the end of the word
 
 noremap <leader>vsb :ls<cr>:vertical sb<space>
 
@@ -335,8 +338,8 @@ noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
 noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
 "}}}
 "Mostra caracteres invisíveis não desejáveis."{{{
-" set listchars=tab:>-,extends:#,nbsp:_,trail:_
-set listchars=tab:>-,extends:#,nbsp:_ "Better not to see trailing spaces otherwise I will want to fix everything
+set listchars=tab:>-,extends:#,nbsp:_,trail:_
+" set listchars=tab:>-,extends:#,nbsp:_ "Better not to see trailing spaces otherwise I will want to fix everything
 set list
 "}}}
 "
@@ -414,7 +417,7 @@ noremap <leader>$$ :tabnext<CR>:.,$tabdo :tabclose<CR>
 
 " shortcut for vimgrep
 map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj `git ls-files`" <Bar> cw<CR>
-map <leader>as :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls-files`" <Bar> cw<CR>
+map <leader>gs :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls-files`" <Bar> cw<CR>
 
 " shortcut for toggling paredit
 map <leader>cp :call PareditToggle()<CR>
@@ -460,3 +463,7 @@ let g:clj_fmt_config = '{:indentation? true, :remove-surrounding-whitespace? tru
 map <leader>rn :set relativenumber!<CR>
 map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refresh)]) (refresh))<CR>
 map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
+
+autocmd FileType clojure setlocal lispwords+=->>,->
+
+set laststatus=2
