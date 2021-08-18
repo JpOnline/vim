@@ -166,6 +166,11 @@ set guifont=10x20
 "
 "Split lines by pattern
 ":'<,'>s/<pattern>/\r/g
+":'<,'>s/\(#[a-zA-Z\.]*{\)/\r\r\1/g
+":'<,'>s/{/\r{/g
+":'<,'>s/,/\r/g
+":'<,'>s/\\n\\t/\r  /g
+"
 "
 "Pattern that is not 'A'
 "[^A]
@@ -178,6 +183,12 @@ set guifont=10x20
 "
 "ge
 "Like b, but set the cursor in the end of the word
+"
+"v{n}>
+"To indent the current line n times to the right
+"
+"set foldlevel=20
+"To start with folds all opened
 
 noremap <leader>vsb :ls<cr>:vertical sb<space>
 
@@ -235,7 +246,8 @@ set number "the line number is showed insted of zero in version 7.4
 set relativenumber"}}}
 " shortcut to push the lines down{{{
 map <leader>o i<CR><Esc>kA<Esc>
-imap <leader>o <CR><Esc>kA"}}}
+imap <leader>o <CR><Esc>kA
+"}}}
 " shortcut to adjust beginnings of functions just putting {} after the ){{{
 imap {} {<CR>}<Esc>kA
 "}}}
@@ -423,6 +435,9 @@ map <leader>gs :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls
 map <leader>cp :call PareditToggle()<CR>
 imap <leader>cp <ESC>:call PareditToggle()<CR>li
 
+" Toggle parinfer
+map <leader>pt :ToggleParinferMode<CR>
+
 "Pra desligar automaticamente com script em ~/shutdown-test
 "autocmd BufWritePost * silent! !touch ~/now
 
@@ -463,7 +478,19 @@ let g:clj_fmt_config = '{:indentation? true, :remove-surrounding-whitespace? tru
 map <leader>rn :set relativenumber!<CR>
 map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refresh)]) (refresh))<CR>
 map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
+" map <leader>rr :CljEval (do (require 'dev :reload-all) (dev/reset))<CR>
 
-autocmd FileType clojure setlocal lispwords+=->>,->
+autocmd FileType clojure setlocal lispwords+=->>,->,some->
 
+" Show status line in all windows
 set laststatus=2
+
+" A much better clojure formatter
+map <leader>zp !a(zprint '{:width 100, :style :justified :map {:comma? false}}'<CR>
+map <leader>z1 !a(zprint '{:width 80, :style :justified :map {:comma? false}}'<CR>
+
+" Evaluate parinfer
+map <leader>m :ToggleParinfer<CR>a <BS>jk:ToggleParinfer<CR>
+
+" Open buffer of file under the cursor
+map <C-W>b :let mycurf=expand("<cfile>")<CR>:execute("tab drop ".mycurf)<CR>
