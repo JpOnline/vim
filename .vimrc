@@ -214,7 +214,7 @@ let mapleader=","
 
 "torna a sequencia "jk" o novo "esc""{{{
 imap jk <esc>
-vmap jk <esc>
+" vmap jk <esc>
 "}}}
 " bind Ctrl-<movement> to move between wndows"{{{
 noremap <c-j> <c-w>j
@@ -480,17 +480,46 @@ map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refr
 map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
 " map <leader>rr :CljEval (do (require 'dev :reload-all) (dev/reset))<CR>
 
-autocmd FileType clojure setlocal lispwords+=->>,->,some->
+autocmd FileType clojure setlocal lispwords+=->>,->,some->,ex-info
 
 " Show status line in all windows
 set laststatus=2
 
 " A much better clojure formatter
 map <leader>zp !a(zprint '{:width 100, :style :justified :map {:comma? false}}'<CR>
-map <leader>z1 !a(zprint '{:width 80, :style :justified :map {:comma? false}}'<CR>
+map <leader>z1 !a(zprint '{:width 60, :style :justified :map {:comma? false :nl-separator? true}}'<CR>
 
 " Evaluate parinfer
 map <leader>m :ToggleParinfer<CR>a <BS>jk:ToggleParinfer<CR>
 
 " Open buffer of file under the cursor
 map <C-W>b :let mycurf=expand("<cfile>")<CR>:execute("tab drop ".mycurf)<CR>
+
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" reset parinfer map ctrl-i, instead of indenting it goes back to default behavior
+" nunmap <buffer> <c-i>
+" Actually this doesn't work. What does work is to remove/comment the mappings
+" of Tab in vim-parinfer/parinfer.vim
+
+" goto tag with motion
+nmap <silent> <leader>t :set opfunc=TagWithMotion<CR>g@
+vmap <silent> <leader>t :<C-U>call TagWithMotion(visualmode(), 1)<CR>
+function! TagWithMotion(type, ...)
+  let sel_save = &selection
+  let &selection = "inclusive"
+  let reg_save = @@
+
+  if a:0  " Invoked from Visual mode, use gv command.
+    silent exe "normal! gvy"
+  elseif a:type == 'line'
+    silent exe "normal! '[V']y"
+  else
+    silent exe "normal! `[v`]y"
+  endif
+
+  execute "tag " . @@
+
+  let &selection = sel_save
+  let @@ = reg_save
+endfunction
