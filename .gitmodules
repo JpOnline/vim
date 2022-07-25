@@ -40,3 +40,6 @@
 [submodule "vimfiles/bundle/vim-magnum"]
 	path = vimfiles/bundle/vim-magnum
 	url = git@github.com:glts/vim-magnum.git
+[submodule "vimfiles/bundle/vim-radical"]
+	path = vimfiles/bundle/vim-radical
+	url = git@github.com:glts/vim-radical.git
