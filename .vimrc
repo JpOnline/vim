@@ -1,195 +1,214 @@
-"Comandos Importantes:{{{
-"u
-"undo
-"
-"CTRL-R
-"redo
-"
-"o
-"pula linha e vai pro modo inserção
-"
-":set ic
-"faz com que a busa ignore maiúsculas e minúsculas
-"
-"b
-"o mesmo que w, só que para trás
-"
-"CTRL-G
-"mostra o nome do arquivo e algumas outras e outras informações
-"
-":set autoindent
-"identa automaticamente
-"
-":set cindent shifitwidth=4
-"identa automaticamente como arquivos c e java com identação tamanho 4
-"
-":filetype indent on
-"identa automaticamente arquivos conhecidos
-"
-"CTRL-V (com shift) ou CTRL-q
-"entra no modo Visual Block, que permite inserir em várias linhas ao selecioná-las e apertar I e depois de inserir o testo apertar <ESC> 
-"
-"CTRL-T
-"indenta no modo inserção
-"
-"CTRL-D
-"retira uma indentação no modo inserção
-"
-"CTRL-W
-"deleta uma palavra no modo inserção
-"
-"gU{movimento}
-"torna maiuscula
-"
-"gu{movimento}
-"torna minuscula
-"
-"<C-o>
-"ultima visualizacao
-"
-"<C-i>
-"contrario de <C-o>
-"
-"<c-z>
-"puts the vim job in stop mode
-"
-"fg
-"get back from the stop mode
-"
-"<c-w>s
-"split horizontal window
-"
-"<c-w>v
-"split vertical window
-"
-":put a
-"paste the macro A into a document
-"
-":reg a
-"show the macro A
-"
-""ay$
-"copy the line to the macro A
+"Comandos Importantes:
+  "u
+  "undo
+  "
+  "CTRL-R
+  "redo
+  "
+  "o
+  "pula linha e vai pro modo inserção
+  "
+  ":set ic
+  "faz com que a busa ignore maiúsculas e minúsculas
+  "
+  "b
+  "o mesmo que w, só que para trás
+  "
+  "CTRL-G
+  "mostra o nome do arquivo e algumas outras e outras informações
+  "
+  ":set autoindent
+  "identa automaticamente
+  "
+  ":set cindent shifitwidth=4
+  "identa automaticamente como arquivos c e java com identação tamanho 4
+  "
+  ":filetype indent on
+  "identa automaticamente arquivos conhecidos
+  "
+  "CTRL-V (com shift) ou CTRL-q
+  "entra no modo Visual Block, que permite inserir em várias linhas ao selecioná-las e apertar I e depois de inserir o testo apertar <ESC> 
+  "
+  "CTRL-T
+  "indenta no modo inserção
+  "
+  "CTRL-D
+  "retira uma indentação no modo inserção
+  "
+  "CTRL-W
+  "deleta uma palavra no modo inserção
+  "
+  "gU{movimento}
+  "torna maiuscula
+  "
+  "gu{movimento}
+  "torna minuscula
+  "
+  "<C-o>
+  "ultima visualizacao
+  "
+  "<C-i>
+  "contrario de <C-o>
+  "
+  "<c-z>
+  "puts the vim job in stop mode
+  "
+  "fg
+  "get back from the stop mode
+  "
+  "<c-w>s
+  "split horizontal window
+  "
+  "<c-w>v
+  "split vertical window
+  "
+  ":put a
+  "paste the macro A into a document
+  "
+  ":reg a
+  "show the macro A
+  "
+  ""ay$
+  "copy the line to the macro A
 
-"t
-"as f but stop before the caracter
-"
-":mksession session.vim
-"Salva sessao atual
-"
-"vim -S ~/seesion.vim
-"inicia vim com seesion
-"
-"CTRl-F
-"Page down
-"
-"CTRL-B
-"Page up
-"
-"zt			
-"redraw, current line at top of window
-"
-"zz
-"redraw, current line at center of window
-"
-"zb
-"redraw, current line at botton of window
-"
-"*
-"search forward the word under the cursor
-"
-"£
-"search backward the word under the cursor
-"
-"gf
-"jumps to the file under the cursor
-"
-"zf
-"create fold
-"
-"H, M and L
-"highest, midle and lowest line in the window
-"
-"~
-"Turn the letter under the cursor upper case
-"
-":vimgrep /<pattern>/gj **/*
-"Search recursively through files in folder, then use cw to open result
-"Use noautocmd to be faster, like :noautocmd vimgrep...
-"
-"Example of good search cmd
-"noautocmd vimgrep //gj `git ls-files`
-"
-"In shell, lists the possible fonts
-"xlsfonts
-"To be used with
-":set guifont=
-set guifont=10x20
-"
-":%s/{pattern}/{string}/gc
-"Substitutes pattern for string, g is to replace in the whole line and c is to
-"confirm in every replace.
-"
-"Ctrl-t
-"indent in insert mode
-"
-"ctrl-d
-"unindent in insert mode
-"
-"g+
-"undo tree, move chronologically forward
-"
-"g-
-"undo tree, move chronologically backward
-"
-":tab split
-"Duplica tab
-"
-":<ctrl-f>
-"Edita comando no normal mode (bom pra copy paste e manipulação de registros)
-"
-":tabm 0       move current tab to first
-":tabm         move current tab to last
-":tabm {i}     move current tab to position i+1
-"{i}gt         go to tab in position i
-"
-"Pra configurar o copy paste no tmux:
-"- Primeiro copiar as seguintes 2 linhas para ~/.tmux.conf
-"# Automatically copy tmux selection to X clipboard
-"bind-key -n C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
-"- Então instalar xclip com
-"sudo apt-get install xclip
-"}}}
-"
-"Open a new vim split from an existing buffer
-":ls<cr>:vertical sb<space>
-"
-"Split lines by pattern
-":'<,'>s/<pattern>/\r/g
-":'<,'>s/\(#[a-zA-Z\.]*{\)/\r\r\1/g
-":'<,'>s/{/\r{/g
-":'<,'>s/,/\r/g
-":'<,'>s/\\n\\t/\r  /g
-"
-"
-"Pattern that is not 'A'
-"[^A]
-"
-"Like * but without \< and \>
-"g*
-"
-" Convert each name_like_this to nameLikeThis in current line. https://vim.fandom.com/wiki/Converting_variables_to_or_from_camel_case
-":s#_\(\l\)#\u\1#g
-"
-"ge
-"Like b, but set the cursor in the end of the word
-"
-"v{n}>
-"To indent the current line n times to the right
-"
-"set foldlevel=20
-"To start with folds all opened
+  "t
+  "as f but stop before the caracter
+  "
+  ":mksession session.vim
+  "Salva sessao atual
+  "
+  "vim -S ~/seesion.vim
+  "inicia vim com seesion
+  "
+  "CTRl-F
+  "Page down
+  "
+  "CTRL-B
+  "Page up
+  "
+  "zt			
+  "redraw, current line at top of window
+  "
+  "zz
+  "redraw, current line at center of window
+  "
+  "zb
+  "redraw, current line at botton of window
+  "
+  "*
+  "search forward the word under the cursor
+  "
+  "£
+  "search backward the word under the cursor
+  "
+  "gf
+  "jumps to the file under the cursor
+  "
+  "zf
+  "create fold
+  "
+  "H, M and L
+  "highest, midle and lowest line in the window
+  "
+  "~
+  "Turn the letter under the cursor upper case
+  "
+  ":vimgrep /<pattern>/gj **/*
+  "Search recursively through files in folder, then use cw to open result
+  "Use noautocmd to be faster, like :noautocmd vimgrep...
+  "
+  "Example of good search cmd
+  "noautocmd vimgrep //gj `git ls-files`
+  "
+  "In shell, lists the possible fonts
+  "xlsfonts
+  "To be used with
+  ":set guifont=
+  set guifont=10x20
+  "
+  ":%s/{pattern}/{string}/gc
+  "Substitutes pattern for string, g is to replace in the whole line and c is to
+  "confirm in every replace.
+  "
+  "Ctrl-t
+  "indent in insert mode
+  "
+  "ctrl-d
+  "unindent in insert mode
+  "
+  "g+
+  "undo tree, move chronologically forward
+  "
+  "g-
+  "undo tree, move chronologically backward
+  "
+  ":tab split
+  "Duplica tab
+  "
+  ":<ctrl-f>
+  "Edita comando no normal mode (bom pra copy paste e manipulação de registros)
+  "
+  ":tabm 0       move current tab to first
+  ":tabm         move current tab to last
+  ":tabm {i}     move current tab to position i+1
+  "{i}gt         go to tab in position i
+  "
+  "Pra configurar o copy paste no tmux:
+  "- Primeiro copiar as seguintes 2 linhas para ~/.tmux.conf
+  "# Automatically copy tmux selection to X clipboard
+  "bind-key -n C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+  "- Então instalar xclip com
+  "sudo apt-get install xclip
+  "
+  "Open a new vim split from an existing buffer
+  ":ls<cr>:vertical sb<space>
+  "
+  "Split lines by pattern
+  ":'<,'>s/<pattern>/\r/g
+  ":'<,'>s/\(#[a-zA-Z\.]*{\)/\r\r\1/g
+  ":'<,'>s/{/\r{/g
+  ":'<,'>s/,/\r/g
+  ":'<,'>s/\\n\\t/\r  /g
+  "
+  "
+  "Pattern that is not 'A'
+  "[^A]
+  "
+  "Like * but without \< and \>
+  "g*
+  "
+  " Convert each name_like_this to nameLikeThis in current line. https://vim.fandom.com/wiki/Converting_variables_to_or_from_camel_case
+  ":s#_\(\l\)#\u\1#g
+  "
+  "ge
+  "Like b, but set the cursor in the end of the word
+  "
+  "v{n}>
+  "To indent the current line n times to the right
+  "
+  "set foldlevel=20
+  "To start with folds all opened
+  "
+  "zr foldlevel++
+  "zm foldlevel--
+  "zR Open all folds
+  "zM Close all folds
+  "
+  "To diff files open them in split (e.g. with `vsplit`) and
+  ":diffthis
+  "
+  "- Easy Align
+  "- Align around space
+  "vGga<space>
+  "- Align around last space
+  "vGga-<space>
+  "- Interative mode and regex
+  "vGga^p^x
+  "
+  "Fireplace eval the whole file
+  "%Eval
 
+" Open a buffer in vertical split
 noremap <leader>vsb :ls<cr>:vertical sb<space>
 
 set showcmd
@@ -200,9 +219,8 @@ set tabstop=2
 set smartindent
 set expandtab
 
-"Plugin manager"{{{
+"Plugin manager"
 execute pathogen#infect()
-"}}}
 
 syntax on
 filetype plugin indent on
@@ -212,212 +230,200 @@ set clipboard=unnamedplus
 
 let mapleader=","
 
-"torna a sequencia "jk" o novo "esc""{{{
-imap jk <esc>
-" vmap jk <esc>
-"}}}
-" bind Ctrl-<movement> to move between wndows"{{{
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
-"}}}
-" don't automatically wrap text when typing"{{{
+"torna a sequencia "jk" o novo "esc""
+  imap jl <esc>
+  " vmap jk <esc>
+
+" bind Ctrl-<movement> to move between wndows"
+  noremap <c-j> <c-w>j
+  noremap <c-k> <c-w>k
+  noremap <c-l> <c-w>l
+  noremap <c-h> <c-w>h
+
+" don't automatically wrap text when typing"
 set fo-=t
-"}}}
-" Disable backup and swap files"{{{
-" set nobackup
-" set nowritebackup
-" set noswapfile
-"}}}
-"Change the location of backup files
-set backupdir=.backup/,~/.backup/,/tmp//
-set directory=.swp/,~/.swp/,/tmp//
-set undodir=.undo/,~/.undo/,/tmp//
-" turn mouse on (good to resize wondows)"{{{
+
+" Manage backups
+  " set nobackup
+  " set nowritebackup
+  " set noswapfile
+  set backup "Turn on backup option
+  set writebackup "Make backup before overwriting the current buffer
+  set backupcopy=yes "Overwrite the original backup file, also prevents from saving twice. Good for hot reloading
+  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M") "Meaningful backup name, ex: filename@2015-04-05.14:59
+  "Change the location of backup files
+  set backupdir=.backup/,~/.backup/,/tmp/vim-backups//
+  set directory=.swp/,~/.swp/,/tmp//
+  set undodir=.undo/,~/.undo/,/tmp//
+
+" turn mouse on (good to resize wondows)"
 set mouse=a
-"}}}
-" To use shift-e to run codekj (disabled)"{{{
-noremap <S-E> :'<,'>Eval<CR>
-" noremap <S-E> :silent !polymer test > .vim/tmpExecutionOutput &<CR> :vsp .vim/tmpExecutionOutput<CR><c-w>r<c-w>h
-"}}}
-" Show numbers in the left side (to use set relativenumber too){{{
-set number "the line number is showed insted of zero in version 7.4
-set relativenumber"}}}
-" shortcut to push the lines down{{{
-map <leader>o i<CR><Esc>kA<Esc>
-imap <leader>o <CR><Esc>kA
-"}}}
-" shortcut to adjust beginnings of functions just putting {} after the ){{{
+
+" Show numbers in the left side (to use set relativenumber too)
+  set number "the line number is showed insted of zero in version 7.4
+  set relativenumber"
+  " Swap this config with ,rn
+  map <leader>rn :set relativenumber!<CR> 
+
+" shortcut to push the lines down
+  map <leader>o i<CR><Esc>kA<Esc>
+  imap <leader>o <CR><Esc>kA
+
+" shortcut to adjust beginnings of functions just putting {} after the )
 imap {} {<CR>}<Esc>kA
-"}}}
-" Allow horizontal scrolling{{{
+
+" Allow horizontal scrolling
 set nowrap
-"}}}
-" case insensitive with lower case and case sensitive with some letter in{{{
+
+" case insensitive with lower case and case sensitive with some letter in
 " upper case
-set smartcase
-set ic
-"}}}
-" Highlighted search (:noh to unhighlight){{{
-set hlsearch
+  set smartcase
+  set ic
 
-" Highlighted search while it's been typed
-" set incsearch
+" Highlighted and incremental search (:noh to unhighlight)
+  set hlsearch
+  set incsearch
 
-" remap add and subtract number by 1 to - and +}}}
-" remap add and subtract number by 1 to - and +"{{{
-noremap + <C-a>h
-noremap - <C-x>h
-"}}}
-" To use CTRL+A and CTRL+W to cange tabs{{{
-noremap <S-q> gT
-noremap <C-a> gt
+" remap add and subtract number by 1 to - and +
+  noremap + <C-a>h
+  noremap - <C-x>h
+
+" To use CTRL+A and CTRL+W to cange tabs
+  noremap <S-q> gT
+  noremap <C-a> gt
+  noremap <C-h> gT
+  noremap <C-l> gt
 " imap <C-A> <esc>gTi
 " imap <C-W> <esc>gti
-"}}}
-" Toggle terminal{{{
+
+" Toggle terminal
 map <C-D> :sh<CR>
-" }}}
-" map space to create/open/close fold{{{
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
-vnoremap <Space> zf
-"}}}
-" set fold method to marker (i.e. uses marker like //{{{)
+
+" map space to create/open/close fold
+  nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
+  vnoremap <Space> zf
+  " Fold html tag
+  nnoremap <leader>ft Vatzf
+
+" set fold method
 set foldmethod=indent
-" }}}
-"{{{ Fold function to replace what's written
-function! MyFoldText()
-  let indent_level = indent(v:foldstart)
-  let indent = repeat(' ',indent_level - 1)
-  let line = substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
-  let foldtextstart = strpart('+' . indent . line, 0, (winwidth(0)*3)/4)
-  let lines_count = v:foldend - v:foldstart + 1
-  let lines_count_text = '[ ' . printf("%6s", lines_count . ' lines') . ' ]'
-  let foldtextlength = strlen(substitute(foldtextstart . lines_count_text, '.', 'x', 'g')) + &foldcolumn
-  let foldchar = matchstr(&fillchars, 'fold:\zs.')
-  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength-indent_level-5) . lines_count_text
-endfunction
-set foldtext=MyFoldText()
-"}}}
-" Fold html tag{{{
-nnoremap <leader>ft Vatzf
-"}}}
-" map CTRL-SPACE to open the wildmenu{{{
+
+" Fold function to replace what's written
+  function! MyFoldText()
+    let indent_level = indent(v:foldstart)
+    let indent = repeat(' ',indent_level - 1)
+    let line = substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+    let foldtextstart = strpart('+' . indent . line, 0, (winwidth(0)*3)/4)
+    let lines_count = v:foldend - v:foldstart + 1
+    let lines_count_text = '[ ' . printf("%6s", lines_count . ' lines') . ' ]'
+    let foldtextlength = strlen(substitute(foldtextstart . lines_count_text, '.', 'x', 'g')) + &foldcolumn
+    let foldchar = matchstr(&fillchars, 'fold:\zs.')
+    return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength-indent_level-5) . lines_count_text
+  endfunction
+  set foldtext=MyFoldText()
+
+" map CTRL-SPACE to open the wildmenu
 inoremap <C-@> <C-x><C-o>
-"}}}
-"Change colors{{{
+
+"Change colors
 colorscheme custom_(based_on_jellybeans)
-"}}}
-" Open vimrc in a split view{{{
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-"}}}
-" reload vimrc without restarting{{{
-nnoremap <leader>er :so $MYVIMRC<cr>:noh<cr>
-"}}}
-" To start to write after a end of function{{{
-inoremap <leader>u <Esc>/[)}\]>]<CR>:noh<CR>a
-nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
-"}}}
-"shortcut for NerdTree"{{{
-nmap <leader>3 :NERDTreeToggle<CR>
-"}}}
+
+" .vimrc management
+  " Open vimrc in a split view
+  nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+  " reload vimrc without restarting{{{
+  nnoremap <leader>er :so $MYVIMRC<cr>:noh<cr>
+
+" To start to write after a end of function
+  inoremap <leader>u <Esc>/[)}\]>]<CR>:noh<CR>a
+  nnoremap <leader>u /[)}\]>]<cr>:noh<cr>a
+
+"shortcut for NerdTree"
+  nmap <leader>3 :NERDTreeToggle<CR>
+  let NERDTreeCustomOpenArgs = {'file':{'reuse':'all', 'where': 't', 'keepopen': 1}}
 
 nmap <leader>8 :Tagbar<CR>
 
-"creating html tags"{{{
-function! CreateHTMLTag()
-  execute "normal! ^yWi<\<ESC>A></\<ESC>p"
-  if GetCharUnderCursor() == ' '
-    "Delete the character
-    execute "normal! x"
-  endif
-  execute "normal! a>\<ESC>F<"
-endfunction
-imap <Leader>ct <ESC>:call CreateHTMLTag()<CR>i
-imap <Leader>cT <ESC>:call CreateHTMLTag()<CR>i<CR><ESC>ko<C-t>
-"}}}
-"TO always work with utf-8"{{{
-set encoding=utf-8
-set fileencoding=utf-8
-"}}}
-"Fix syntax"{{{
-noremap <Leader><Leader> <Esc>:syntax sync fromstart<CR>
-inoremap <Leader><Leader> <C-o>:syntax sync fromstart<CR>
-"}}}
-"Correct identation according to previous line"{{{
-noremap <Leader>i0 :normal kyypj^d$k^PlDjdd^<CR>
-noremap <Leader>i1 kyypj^d$k^PlD>>jdd^
-"}}}
-"Mostra caracteres invisíveis não desejáveis."{{{
-set listchars=tab:>-,extends:#,nbsp:_,trail:_
-" set listchars=tab:>-,extends:#,nbsp:_ "Better not to see trailing spaces otherwise I will want to fix everything
-set list
-"}}}
-"
-"creating polymer function"{{{
-imap <Leader>pf : function(){//{{{<CR>},//}}}<ESC>k$
-"}}}
-"
-"set up windows sizes and fonts"{{{
-set guifont=Inconsolata:h36
-set lines=50 columns=122
-set cursorline
-"}}}
-"
-"Running command in background {{{
-" This callback will be executed when the entire command is completed
-function! BackgroundCommandClose(channel)
-  " execute 'vs '. g:backgroundCommandOutput
-  " execute "normal! \<c-w>l\<CR>\<c-w>r"
-  " Read the output from the command into the quickfix window
-  execute "cfile! " . g:backgroundCommandOutput
-  " Open the quickfix window
-  copen
-  " get back to working file.
-  execute "normal! \<c-w>k"
-  execute "normal! \<c-o>"
-  unlet g:backgroundCommandOutput
-endfunction
+"creating html tags"
+  function! CreateHTMLTag()
+    execute "normal! ^yWi<\<ESC>A></\<ESC>p"
+    if GetCharUnderCursor() == ' '
+      "Delete the character
+      execute "normal! x"
+    endif
+    execute "normal! a>\<ESC>F<"
+  endfunction
+  imap <Leader>ct <ESC>:call CreateHTMLTag()<CR>i
+  imap <Leader>cT <ESC>:call CreateHTMLTag()<CR>i<CR><ESC>ko<C-t>
 
-function! RunBackgroundCommand(command)
-  " Make sure we're running VIM version 8 or higher.
-  if v:version < 800
-    echoerr 'RunBackgroundCommand requires VIM version 8 or higher'
-    return
-  endif
+"TO always work with utf-8"
+  set encoding=utf-8
+  set fileencoding=utf-8
 
-  if exists('g:backgroundCommandOutput')
-    echo 'Already running task in background'
-  else
-    echo 'Running task in background'
-    " Launch the job.
-    " Notice that we're only capturing out, and not err here. This is because, for some reason, the callback
-    " will not actually get hit if we write err out to the same file. Not sure if I'm doing this wrong or?
-    let g:backgroundCommandOutput = tempname()
-    call job_start(a:command, {'close_cb': 'BackgroundCommandClose', 'out_io': 'file', 'out_name': g:backgroundCommandOutput})
-  endif
-endfunction
+"Fix syntax"
+  noremap <Leader><Leader> <Esc>:syntax sync fromstart<CR>
+  inoremap <Leader><Leader> <C-o>:syntax sync fromstart<CR>
 
-" So we can use :BackgroundCommand to call our function.
-command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
-"}}}
-"
-" Return the character currently under the cursor.{{{
-function! GetCharUnderCursor()
-  return matchstr(getline('.'), '\%' . col('.') . 'c.')
-endfunction"}}}
+"Mostra caracteres invisíveis não desejáveis."
+  " set listchars=tab:>-,extends:#,nbsp:_,trail:_
+  set listchars=tab:>-,extends:#,nbsp:_ "Better not to see trailing spaces otherwise I will want to fix everything
+  set list
+
+"set up windows sizes and fonts"
+  set guifont=Inconsolata:h36
+  set lines=50 columns=122
+  set cursorline
+
+"Running command in background
+  " This callback will be executed when the entire command is completed
+  function! BackgroundCommandClose(channel)
+    " execute 'vs '. g:backgroundCommandOutput
+    " execute "normal! \<c-w>l\<CR>\<c-w>r"
+    " Read the output from the command into the quickfix window
+    execute "cfile! " . g:backgroundCommandOutput
+    " Open the quickfix window
+    copen
+    " get back to working file.
+    execute "normal! \<c-w>k"
+    execute "normal! \<c-o>"
+    unlet g:backgroundCommandOutput
+  endfunction
+  "
+  function! RunBackgroundCommand(command)
+    " Make sure we're running VIM version 8 or higher.
+    if v:version < 800
+      echoerr 'RunBackgroundCommand requires VIM version 8 or higher'
+      return
+    endif
+
+    if exists('g:backgroundCommandOutput')
+      echo 'Already running task in background'
+    else
+      echo 'Running task in background'
+      " Launch the job.
+      " Notice that we're only capturing out, and not err here. This is because, for some reason, the callback
+      " will not actually get hit if we write err out to the same file. Not sure if I'm doing this wrong or?
+      let g:backgroundCommandOutput = tempname()
+      call job_start(a:command, {'close_cb': 'BackgroundCommandClose', 'out_io': 'file', 'out_name': g:backgroundCommandOutput})
+    endif
+  endfunction
+  "
+  " So we can use :BackgroundCommand to call our function.
+  command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
+
+" Return the character currently under the cursor.
+  function! GetCharUnderCursor()
+    return matchstr(getline('.'), '\%' . col('.') . 'c.')
+  endfunction"
 
 set tags=tags
 
 map <leader>cc :TComment<CR>
 
-map c<leader> :w<CR>:RunTests<CR>
-" map c<leader> :Eval (cljs.test/run-tests)<CR>
-map c.<leader> :w<CR>:.RunTests<CR>
-
-" Prevents from saving twice. Good for hot reloading
-set backupcopy=yes
+" Running tests
+  map c<leader> :w<CR>:RunTests<CR>
+  " map c<leader> :Eval (cljs.test/run-tests)<CR>
+  map c.<leader> :w<CR>:.RunTests<CR>
 
 set pastetoggle=<leader>p
 
@@ -428,15 +434,17 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 noremap <leader>$$ :tabnext<CR>:.,$tabdo :tabclose<CR>
 
 " shortcut for vimgrep
-map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj `git ls-files`" <Bar> cw<CR>
-map <leader>gs :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls-files`" <Bar> cw<CR>
+  map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj `git ls-files`" <Bar> cw<CR>
+  map <leader>gs :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj `git ls-files`" <Bar> cw<CR>
 
 " shortcut for toggling paredit
-map <leader>cp :call PareditToggle()<CR>
-imap <leader>cp <ESC>:call PareditToggle()<CR>li
-
-" Toggle parinfer
-map <leader>pt :ToggleParinferMode<CR>
+  " map <leader>cp :call PareditToggle()<CR>
+  " imap <leader>cp <ESC>:call PareditToggle()<CR>li
+  "
+  " Toggle parinfer
+  map <leader>cp :ToggleParinfer<CR>
+  " Evaluate parinfer
+  map <leader>m :ToggleParinfer<CR>a <BS>jk:ToggleParinfer<CR>
 
 "Pra desligar automaticamente com script em ~/shutdown-test
 "autocmd BufWritePost * silent! !touch ~/now
@@ -446,8 +454,6 @@ set cursorcolumn
 
 " Busca em todo o projeto
 command -nargs=1 Sch noautocmd vimgrep /<args>/gj `git ls-files` | cw
-
-let NERDTreeCustomOpenArgs = {'file':{'reuse':'all', 'where': 't', 'keepopen': 1}}
 
 "Use clj-kondo as Clojure linter
 let g:ale_linters = {'clojure': ['clj-kondo']}
@@ -469,31 +475,45 @@ command -nargs=1 Callmyfn noautocmd call Myfn("<args>")
 nnoremap <silent> <leader>ci :exe "Callmyfn " nr2char(getchar())<cr>
 
 "EasyAlign plugin setup (See https://github.com/junegunn/vim-easy-align)
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-let g:clj_fmt_autosave = 0
-let g:clj_fmt_config = '{:indentation? true, :remove-surrounding-whitespace? true, :remove-trailing-whitespace? true, :remove-consecutive-blank-lines? false, :insert-missing-whitespace? true, :align-associative? true, :indents {#"^\w" [[:inner 0]], #".*" [[:inner 0]]}}'
-
-map <leader>rn :set relativenumber!<CR>
-map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refresh)]) (refresh))<CR>
-map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
-" map <leader>rr :CljEval (do (require 'dev :reload-all) (dev/reset))<CR>
-
-autocmd FileType clojure setlocal lispwords+=->>,->,some->,ex-info
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
 
 " Show status line in all windows
 set laststatus=2
 
-" A much better clojure formatter
-map <leader>zp !a(zprint '{:width 100, :style :justified :map {:comma? false}}'<CR>
-map <leader>z1 !a(zprint '{:width 60, :style :justified :map {:comma? false :nl-separator? true}}'<CR>
-
-" Evaluate parinfer
-map <leader>m :ToggleParinfer<CR>a <BS>jk:ToggleParinfer<CR>
-
 " Open buffer of file under the cursor
 map <C-W>b :let mycurf=expand("<cfile>")<CR>:execute("tab drop ".mycurf)<CR>
+        
+" let g:clj_fmt_autosave = 0
+" let g:clj_fmt_config = '{:indentation? true, :remove-surrounding-whitespace? true, :remove-trailing-whitespace? true, :remove-consecutive-blank-lines? false, :insert-missing-whitespace? true, :align-associative? true, :indents {#"^\w" [[:inner 0]], #".*" [[:inner 0]]}}'
+
+" Clojure
+  autocmd FileType clojure setlocal lispwords+=->>,->,some->,ex-info
+  map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refresh)]) (refresh))<CR>
+  map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
+  map <leader>rp :Eval (require '[clojure.pprint :refer [pprint]])<CR>
+  map <leader>pp :Eval (pprint *1)<CR>
+  " map <leader>rr :CljEval (do (require 'dev :reload-all) (dev/reset))<CR>
+  map <leader>1 :Eval (def input input1)<CR>
+  map <leader>2 :Eval (def input input2)<CR>
+  "
+  " Put an "a" mark with `ma` to run this code when hiting ,a
+  map <leader>a mb'acpp`b
+  "
+  " Define the last result with the name under the cursor
+  map <leader>d1 ye:Eval (def <C-r>+ *1)<CR>
+  " With the cursor over a let var definition, uses ,dd to define it in global scope
+  vnoremap <leader>dd y:Eval (def <C-r>+)<CR>
+  "
+  " A much better clojure formatter
+  map <leader>zp !a(zprint '{:width 100, :style :justified :map {:comma? false}}'<CR>
+  map <leader>z1 !a(zprint '{:width 60, :style :justified :map {:comma? false :nl-separator? true}}'<CR>
+  "
+  " From css to clj (written this way with the repeat plugin allows me to use
+  " "." to repeat
+  nmap <Plug>CssToClj i:<ESC>lf:xli"<ESC>f;r"F:j
+  \:call repeat#set("\<Plug>CssToClj")<CR>
+  nmap <leader>cs <Plug>CssToClj
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -503,23 +523,43 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " of Tab in vim-parinfer/parinfer.vim
 
 " goto tag with motion
-nmap <silent> <leader>t :set opfunc=TagWithMotion<CR>g@
-vmap <silent> <leader>t :<C-U>call TagWithMotion(visualmode(), 1)<CR>
-function! TagWithMotion(type, ...)
-  let sel_save = &selection
-  let &selection = "inclusive"
-  let reg_save = @@
+  nmap <silent> <leader>t :set opfunc=TagWithMotion<CR>g@
+  vmap <silent> <leader>t :<C-U>call TagWithMotion(visualmode(), 1)<CR>
+  function! TagWithMotion(type, ...)
+    let sel_save = &selection
+    let &selection = "inclusive"
+    let reg_save = @@
 
-  if a:0  " Invoked from Visual mode, use gv command.
-    silent exe "normal! gvy"
-  elseif a:type == 'line'
-    silent exe "normal! '[V']y"
-  else
-    silent exe "normal! `[v`]y"
-  endif
+    if a:0  " Invoked from Visual mode, use gv command.
+      silent exe "normal! gvy"
+    elseif a:type == 'line'
+      silent exe "normal! '[V']y"
+    else
+      silent exe "normal! `[v`]y"
+    endif
 
-  execute "tag " . @@
+    execute "tag " . @@
 
-  let &selection = sel_save
-  let @@ = reg_save
-endfunction
+    let &selection = sel_save
+    let @@ = reg_save
+  endfunction
+
+" Include src/ and test/ in path so <c-w>gf can go to definition
+  set path+=src/
+  set path+=test/
+
+let g:tagbar_type_swift = {
+  \ 'ctagstype': 'swift',
+  \ 'kinds' : [
+    \ 'n:Enums',
+    \ 't:Typealiases',
+    \ 'p:Protocols',
+    \ 's:Structs',
+    \ 'c:Classes',
+    \ 'f:Functions',
+    \ 'v:Variables',
+    \ 'e:Extensions'
+  \ ],
+  \ 'sort' : 0
+\ }
+
