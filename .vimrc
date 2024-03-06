@@ -14,6 +14,9 @@
   "b
   "o mesmo que w, só que para trás
   "
+  "ge
+  "o mesmo que e, só que pra trás
+  "
   "CTRL-G
   "mostra o nome do arquivo e algumas outras e outras informações
   "
@@ -207,6 +210,18 @@
   "
   "Fireplace eval the whole file
   "%Eval
+  "
+  "break line based on textwidth
+  "gq<move>
+  "
+  "Count occurrences
+  ":%s/pattern//gn
+  "
+  "regex pattern or another
+  "/<pattern1>\|<pattern2>
+  "
+  "Delete without yanking
+  ""x<delete-move>
 
 " Open a buffer in vertical split
 noremap <leader>vsb :ls<cr>:vertical sb<space>
@@ -231,7 +246,7 @@ set clipboard=unnamedplus
 let mapleader=","
 
 "torna a sequencia "jk" o novo "esc""
-  imap jl <esc>
+  imap jk <esc>
   " vmap jk <esc>
 
 " bind Ctrl-<movement> to move between wndows"
@@ -291,8 +306,8 @@ set nowrap
 " To use CTRL+A and CTRL+W to cange tabs
   noremap <S-q> gT
   noremap <C-a> gt
-  noremap <C-h> gT
-  noremap <C-l> gt
+  " noremap <C-h> gT
+  " noremap <C-l> gt
 " imap <C-A> <esc>gTi
 " imap <C-W> <esc>gti
 
@@ -425,7 +440,8 @@ map <leader>cc :TComment<CR>
   " map c<leader> :Eval (cljs.test/run-tests)<CR>
   map c.<leader> :w<CR>:.RunTests<CR>
 
-set pastetoggle=<leader>p
+" set pastetoggle=<leader>p
+map <leader>p "0p
 
 " Make ctrl-p ignore files and dirs of .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -488,22 +504,31 @@ map <C-W>b :let mycurf=expand("<cfile>")<CR>:execute("tab drop ".mycurf)<CR>
 " let g:clj_fmt_config = '{:indentation? true, :remove-surrounding-whitespace? true, :remove-trailing-whitespace? true, :remove-consecutive-blank-lines? false, :insert-missing-whitespace? true, :align-associative? true, :indents {#"^\w" [[:inner 0]], #".*" [[:inner 0]]}}'
 
 " Clojure
-  autocmd FileType clojure setlocal lispwords+=->>,->,some->,ex-info
+  autocmd FileType clojure setlocal lispwords+=->>,->,some->,some->>,ex-info,new,request,assoc,not-join,deep-merge-with,join " Use `set lispwords+=<word> change it imediately
   map <leader>rl :CljEval (do (require '[clojure.tools.namespace.repl :refer (refresh)]) (refresh))<CR>
   map <leader>rr :CljEval (do (require '[dev/dev]) (dev/reset))<CR>
   map <leader>rp :Eval (require '[clojure.pprint :refer [pprint]])<CR>
-  map <leader>pp :Eval (pprint *1)<CR>
+  map <leader>pr :Eval (pprint *1)<CR>
+  map <leader>psr :Eval (cljs.pprint/pprint *1)<CR>
   " map <leader>rr :CljEval (do (require 'dev :reload-all) (dev/reset))<CR>
-  map <leader>1 :Eval (def input input1)<CR>
-  map <leader>2 :Eval (def input input2)<CR>
   "
   " Put an "a" mark with `ma` to run this code when hiting ,a
-  map <leader>a mb'acpp`b
+  map <leader>a mb`acpp`b
+  map <leader>c1 mb`1cpp`b
+  map <leader>c2 mb`2cpp`b
+  map <leader>c3 mb`3cpp`b
+  map <leader>c4 mb`4cpp`b
+  map <leader>c5 mb`5cpp`b
+  map <leader>c6 mb`6cpp`b
+  map <leader>c7 mb`7cpp`b
+  map <leader>c8 mb`8cpp`b
+  map <leader>c9 mb`9cpp`b
+  map <leader>c0 mb`0cpp`b
   "
   " Define the last result with the name under the cursor
-  map <leader>d1 ye:Eval (def <C-r>+ *1)<CR>
-  " With the cursor over a let var definition, uses ,dd to define it in global scope
-  vnoremap <leader>dd y:Eval (def <C-r>+)<CR>
+  map <leader>ce ye:Eval (def <C-r>+ *1)<CR>
+  " With the var name and body selected, uses ,define it in global scope
+  vnoremap <leader>cpp y:Eval (def <C-r>+)<CR>
   "
   " A much better clojure formatter
   map <leader>zp !a(zprint '{:width 100, :style :justified :map {:comma? false}}'<CR>
@@ -563,3 +588,10 @@ let g:tagbar_type_swift = {
   \ 'sort' : 0
 \ }
 
+" Open definition in a new tab
+nmap <leader>] <C-W>]<C-W>T
+
+" Fold by the pattern ';; ----' (Ainda precisa usar uma macro pra rodar
+" repetidamente e excluir o último marcador que acaba englobando tudo, mas tá
+" bom)
+nmap <leader>fp v/;; ---- \\|\%$kkzfn
