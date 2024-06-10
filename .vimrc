@@ -211,7 +211,11 @@
   "Fireplace eval the whole file
   "%Eval
   "
-  "break line based on textwidth
+  "Fireplace command-line-window
+  "cqq
+  "cqc
+  "
+  "break line based on textwidth (wrap)
   "gq<move>
   "
   "Count occurrences
@@ -222,6 +226,16 @@
   "
   "Delete without yanking
   ""x<delete-move>
+  "
+  "Spellcheck (i.e. natural language dictionary checker). Some related
+  "mappings in https://vimtricks.com/p/vim-spell-check/
+  ":set spell!
+  "
+  "Add the word under the cursor to the dictionary
+  "zg
+  "
+  "Insert foldlevel as first char in line
+  ":%s/^/\=foldlevel('.')."\t"/
 
 " Open a buffer in vertical split
 noremap <leader>vsb :ls<cr>:vertical sb<space>
@@ -595,3 +609,6 @@ nmap <leader>] <C-W>]<C-W>T
 " repetidamente e excluir o último marcador que acaba englobando tudo, mas tá
 " bom)
 nmap <leader>fp v/;; ---- \\|\%$kkzfn
+
+" Improve folding, as a complement of 'indent', to fold patterns like ';; ---- Name ----'
+set foldexpr=getline(v:lnum)=~'^;;\\s--'?'>1':getline(v:lnum)=~'^;;'?'=':indent(v:lnum)+3
