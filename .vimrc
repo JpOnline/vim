@@ -73,7 +73,7 @@
   "
   ""ay$
   "copy the line to the macro A
-
+  "
   "t
   "as f but stop before the caracter
   "
@@ -236,6 +236,29 @@
   "
   "Insert foldlevel as first char in line
   ":%s/^/\=foldlevel('.')."\t"/
+  "
+  "Move window (the second key is releasing CTRL and holding SHIFT)
+  "CTRL-W [H | J | K | L]
+  "
+  "Dunst show history notication
+  "ctrl+space
+  "
+  "Dunst close all notifications
+  "ctrl+Shift+space
+  "
+  "Dunst (through i3) go to window
+  "mod+ctrl+Return
+  "
+  "Fireplace load whole file
+  "%Eval
+  "
+  "Evaluate the selection in Clojure, but do not print
+  ":silent '<,'>Eval
+  "
+  "Open a list of commits that touched the current file, when the commit line
+  "is clicked the file in that version is loaded. This is a vim fugitive
+  "command
+  ":0Glog -- %
 
 " Open a buffer in vertical split
 noremap <leader>vsb :ls<cr>:vertical sb<space>
@@ -299,7 +322,7 @@ set mouse=a
   imap <leader>o <CR><Esc>kA
 
 " shortcut to adjust beginnings of functions just putting {} after the )
-imap {} {<CR>}<Esc>kA
+" imap {} {<CR>}<Esc>kA
 
 " Allow horizontal scrolling
 set nowrap
@@ -335,7 +358,7 @@ map <C-D> :sh<CR>
   nnoremap <leader>ft Vatzf
 
 " set fold method
-set foldmethod=indent
+set foldmethod=expr
 
 " Fold function to replace what's written
   function! MyFoldText()
@@ -554,6 +577,9 @@ map <C-W>b :let mycurf=expand("<cfile>")<CR>:execute("tab drop ".mycurf)<CR>
   \:call repeat#set("\<Plug>CssToClj")<CR>
   nmap <leader>cs <Plug>CssToClj
 
+  "Put the result of last command
+  map <leader>! :Eval! *1<CR>
+
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " reset parinfer map ctrl-i, instead of indenting it goes back to default behavior
@@ -608,7 +634,12 @@ nmap <leader>] <C-W>]<C-W>T
 " Fold by the pattern ';; ----' (Ainda precisa usar uma macro pra rodar
 " repetidamente e excluir o último marcador que acaba englobando tudo, mas tá
 " bom)
-nmap <leader>fp v/;; ---- \\|\%$kkzfn
+nmap <leader>fp v/;; ---- \\|\%$
+kkzfn
 
 " Improve folding, as a complement of 'indent', to fold patterns like ';; ---- Name ----'
 set foldexpr=getline(v:lnum)=~'^;;\\s--'?'>1':getline(v:lnum)=~'^;;'?'=':indent(v:lnum)+3
+
+" Break line without losing alignment
+nmap <leader><leader>o hmbv0y`bi
+jkv0Pv0r kA 
