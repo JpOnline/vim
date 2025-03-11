@@ -235,7 +235,7 @@
   "zg
   "
   "Insert foldlevel as first char in line
-  ":%s/^/\=foldlevel('.')."\t"/
+  ":%s/^/\=foldlevel(line('.'))."\t"/
   "
   "Move window (the second key is releasing CTRL and holding SHIFT)
   "CTRL-W [H | J | K | L]
@@ -637,9 +637,44 @@ nmap <leader>] <C-W>]<C-W>T
 nmap <leader>fp v/;; ---- \\|\%$
 kkzfn
 
-" Improve folding, as a complement of 'indent', to fold patterns like ';; ---- Name ----'
-set foldexpr=getline(v:lnum)=~'^;;\\s--'?'>1':getline(v:lnum)=~'^;;'?'=':indent(v:lnum)+3
-
 " Break line without losing alignment
 nmap <leader><leader>o hmbv0y`bi
 jkv0Pv0r kA 
+
+" Sort by name independently if it's a folder or file.
+let NERDTreeSortOrder=[]
+
+" Improve folding, as a complement of 'indent', to fold patterns like ';; ---- Name ----'
+" set foldexpr=getline(v:lnum)=~'^;;\\s--'?'>1':getline(v:lnum)=~'^;;'?'=':indent(v:lnum)+3
+
+" This is a good test function to be used with the command 
+  "Insert foldlevel as first char in line
+  ":%s/^/\=foldlevel(line('.'))."\t"/
+" so I can set the fold method to indent, insert foldlevel as
+" first char and set this test function to manually change the
+" numbers of fold level and check the behavior.
+function! DebugFoldExpr()
+  let line = getline(v:lnum)
+  let number = line[0] . line[1]
+  return number
+endfunction
+
+" Improve folding, as a complement of 'indent', to fold patterns like ';; -- Name --'
+" with the number of hifens as a indication of fold level.
+function! CustomFoldExpr()
+  let line = getline(v:lnum)
+
+  " Match lines that start with ;; and then hyphens
+  if line =~ '^;;\s*-\{2,}'
+    " Extract just the hyphen group
+    let hyphen_part = matchstr(line, '^;;\s*\zs-\+')
+    " Fold level is the number of hyphens
+    return strlen(hyphen_part)
+  endif
+
+  " Fallback to indent-based folding with an offset
+  return indent(v:lnum)/&shiftwidth + 5
+endfunction
+
+set foldmethod=expr
+set foldexpr=CustomFoldExpr()
